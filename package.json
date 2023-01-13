@@ -1,6 +1,6 @@
 {
   "name": "@jhahn678/component-lib-test",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "build/index.js",
   "publishConfig": {
     "access": "public"
