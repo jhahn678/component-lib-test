@@ -3,7 +3,7 @@
 ## About
 
 This is a basic setup for a cross-platform component library using React-Native, TypeScript and Storybook.
-It utilizes <b><a href="https://docs.expo.dev/">Expo</a></b> which allows developers to easily spin up a playground on their mobile-device to view their components.
+It utilizes <b><a href="https://docs.expo.dev/">Expo</a></b> which allows developers to easily spin up a playground on their mobile-device OR simulator to view their component as they're making changes.
 
 <hr>
 <br>
@@ -18,7 +18,7 @@ yarn install
 ```
 yarn run storybook
 ```
-
+<img src="assets/storybook-demo.png" alt="drawing" height="290" width="500"/>
 
 ## Launch Expo
 ** Used to launch mobile environment
@@ -31,6 +31,7 @@ npx expo start
 ```
 Follow the command line instructions to select an environment. Scanning the QR code to launch on your device requires you to download the Expo Go app. Your device must also be connected to the same network as your computer. More information on this can be found here: https://docs.expo.dev/workflow/run-on-device/
 
+<img src="assets/ios-simulator.png" alt="drawing" height="500"/>
 <br>
 
 
