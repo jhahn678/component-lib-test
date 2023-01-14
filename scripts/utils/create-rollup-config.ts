@@ -5,7 +5,7 @@ import nodeExternals from 'rollup-plugin-node-externals';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { babel } from '@rollup/plugin-babel'
 import visualizer from 'rollup-plugin-visualizer';
-// import esbuild from 'rollup-plugin-esbuild';
+import esbuild from 'rollup-plugin-esbuild';
 // import { getPackagesList } from '../../scripts/utils/get-packages-list';
 
 export interface RollupConfig extends RollupOptions{
@@ -40,47 +40,21 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
 //   }));
 
   const plugins = [
-    commonjs({ include: /node_modules/ }), //converts commonjs to es modules
+    // // commonjs(),
+    // // babel({ babelHelpers: 'bundled' }),
+    commonjs({ include: /node_modules/ }),
     babel({ 
-        babelHelpers: "runtime",
-        extensions: ['.ts', '.tsx', '.js'],
-        presets: [["module:metro-react-native-babel-preset", { disableImportExportTransform: true }]]
+            babelHelpers: "runtime",
+            extensions: ['.ts', '.tsx', '.js'],
+            presets: [["module:metro-react-native-babel-preset", { disableImportExportTransform: true }]]
+        }),
+    nodeExternals(),
+    nodeResolve({ extensions: ['.ts', '.tsx', '.js', '.jsx'] }),
+    esbuild({
+        sourceMap: true,
+        minify: config.format === 'umd',
     }),
-    nodeExternals(), // automatically declares NodeJS built-in modules as external
-    nodeResolve({ extensions: ['.ts', '.tsx', '.js'] }),  // locates modules using the Node resolution algorithm
-    // esbuild({
-    //   minify: config.format === 'umd',
-    //   sourceMap: false,
-    //   tsconfig: path.resolve(process.cwd(), 'tsconfig.json'),
-    // }),
   ];
-
-//   let externals;
-
-//   if (config.format === 'umd') {
-//     externals = [
-//       ...(config?.externals || []),
-//       ...Object.keys({
-//         ...packageJson.peerDependencies,
-//       }),
-//     ];
-//   } else {
-//     externals = [
-//       '@emotion/server/create-instance',
-//       'dayjs/locale/ru',
-//       'highlight.js/lib/languages/typescript',
-//       '@emotion/cache',
-//       '@emotion/utils',
-//       '@emotion/serialize',
-//       'prism-react-renderer/themes/duotoneDark',
-//       'prism-react-renderer/themes/duotoneLight',
-//       ...(config?.externals || []),
-//       ...Object.keys({
-//         ...packageJson.peerDependencies,
-//         ...packageJson.dependencies,
-//       }),
-//     ];
-//   }
 
   const output: OutputOptions = {
     name: config.name,
@@ -99,20 +73,6 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
     output.preserveModules = true;
     output.exports = 'named';
   }
-
-//   if (config.format === 'umd') {
-//     output.file = path.resolve(config.basePath, 'lib/index.umd.js');
-//     output.globals = {
-//       ...pkgList
-//         .map((pkg) => ({
-//           [pkg.packageJson.name]: pkg.packageJson.name,
-//         }))
-//         .reduce((globals, pkgGlobal) => ({ ...globals, ...pkgGlobal }), {}),
-//       react: 'React',
-//       dayjs: 'dayjs',
-//       'react-dom': 'ReactDOM',
-//     };
-//   }
 
   if (config.analyze && config.format === 'es') {
     plugins.push(
@@ -135,7 +95,7 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
   }
 
   return {
-    input: config?.entry || path.resolve(config.basePath, 'index.js'),
+    input: config?.entry || path.resolve(config.basePath, 'src/index.js'),
     output,
     plugins,
   };

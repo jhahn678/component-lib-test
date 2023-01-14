@@ -27,7 +27,7 @@ const { argv }: { argv: any } = yargs(hideBin(process.argv))
   })
   .example([
     ['$0 --formats umd cjs', 'Bundle web and mobile to umd and cjs.'],
-    ['$0 --package web', 'Bundle web only to es and cjs'],
+    ['$0 --package web --analyze', 'Bundle web only to es and cjs and generate analysis files'],
   ]);
 
 (async () => {
