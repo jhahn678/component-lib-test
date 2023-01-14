@@ -1,5 +1,5 @@
 import React from 'react';
-import { PressableProps, StyleProp, ViewStyle } from "react-native";
+import { PressableProps, StyleProp, ViewStyle } from 'react-native-web';
 interface Props extends PressableProps {
     style?: StyleProp<ViewStyle>;
     children: React.ReactNode;
