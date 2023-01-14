@@ -6,6 +6,12 @@
     "access": "public"
   },
   "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
     "build": "npm run build:mobile && npm run build:web && ts-node scripts/build",
     "build:mobile": "rimraf build/mobile/{esm,cjs,lib} && tsc --outDir build/mobile/src --declarationDir build/mobile/lib",
     "build:web": "rimraf build/web/{esm,cjs,lib} && tsc --outDir build/web/src --declarationDir build/web/lib && ts-node scripts/modify-imports",
