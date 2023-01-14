@@ -6,15 +6,18 @@
     "access": "public"
   },
   "scripts": {
-    "test-build": "ts-node scripts/build --project web",
+    "test-build:mobile": "rimraf build/mobile/{esm,cjs,lib} && tsc --outDir build/mobile/src --declarationDir build/mobile/lib",
+    "test-build:web": "rimraf build/web/{esm,cjs,lib} && tsc --outDir build/web/src --declarationDir build/web/lib && npm run modify-web-imports",
+    "test-build": "npm run test-build:mobile && npm run test-build:web && ts-node scripts/build",
+    "test-build:analyze": "ts-node scripts/build --package web --analyze",
     "build": "npm run build-web && npm run build-mobile",
     "modify-web-imports": "ts-node scripts/modify-imports",
-    "build-mobile": "rm -rf build/mobile && tsc --outDir build/mobile --declarationDir build/mobile/lib",
-    "build-web": "rm -rf build/web && tsc --outDir build/web --declarationDir build/web/lib && npm run modify-web-imports"
+    "build:mobile": "rm -rf build/mobile && tsc --outDir build/mobile --declarationDir build/mobile/lib",
+    "build:web": "rm -rf build/web && tsc --outDir build/web --declarationDir build/web/lib && npm run modify-web-imports"
   },
   "dependencies": {
     "react": "17.0.2",
-    
+    "react-native": "0.68.2",
     "react-native-web": "0.17.7"
   },
   "devDependencies": {
@@ -39,8 +42,10 @@
     "babel-plugin-react-native-web": "^0.18.10",
     "babel-preset-expo": "^9.2.2",
     "chalk": "4.1.2",
+    "esbuild": "^0.17.0",
     "metro-react-native-babel-preset": "^0.74.0",
     "replace-in-file": "^6.3.5",
+    "rimraf": "^4.0.5",
     "rollup": "^3.10.0",
     "rollup-plugin-esbuild": "^5.0.0",
     "rollup-plugin-node-externals": "^5.1.0",
