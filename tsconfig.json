@@ -9,11 +9,15 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "ESNext"
+    "target": "ES6",
+    "declaration": true,
+    "declarationMap": true,
+    "declarationDir": "lib",
+    "noImplicitAny": false
   },
-  "include": ["stories/**/*"],                  // tsc will build from stories directory
+  "include": ["src/**/*"],                  // tsc will build from stories directory
   "exclude": [
-    "stories/**/*.stories.tsx",                 // tsc will exclude all .stories files
-    "stories/**/*.stories.ts",
+    "src/**/*.stories.tsx",                 // tsc will exclude all .stories files
+    "src/**/*.stories.ts",
   ]
 }

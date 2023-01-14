@@ -68,8 +68,8 @@ export const colors = {
     yes: '#92b753',
     maybe: '#eac143',
     no: '#d4484c',
-    blues: { ...blues },
-    greys: { ...greys },
+    blues: Object.assign({}, blues),
+    greys: Object.assign({}, greys),
 };
 export const textColors = {
     brandPrimary: colors.brandPrimary,
