@@ -2,7 +2,7 @@ import chalk from 'chalk';
 import { replaceInFileSync } from "replace-in-file";
 
 const results = replaceInFileSync({
-  files: "build/web/**/*.js",
+  files: ["build/web/**/*.js","build/web/**/*.jsx", "build/web/**/*.ts", "build/web/**/*.tsx"],
   from: /from [",']react-native[",']/g,
   to: "from 'react-native-web'"
 })
@@ -13,4 +13,4 @@ console.log(`
 
     Modified ${chalk.cyan(modified.length)} files to import from ${chalk.cyan('react-native-web')}
 
-`)
+`);
