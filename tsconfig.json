@@ -12,7 +12,6 @@
     "target": "ES6",
     "declaration": true,
     "declarationMap": true,
-    "declarationDir": "lib",
     "noImplicitAny": false
   },
   "include": ["src/**/*"],                  // tsc will build from stories directory
