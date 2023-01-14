@@ -1,11 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import Button from './stories/components/Button'
 import { StyleSheet, Text, View } from 'react-native';
+import { colors } from './stories/constants/globalStyles';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Text style={styles.text}>Component Playground</Text>
+      <Button style={styles.button}>Hello World</Button>
     </View>
   );
 }
@@ -17,4 +19,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  text: {
+    top: 80,
+    position: 'absolute',
+    fontSize: 24,
+    fontWeight: '700',
+    color: colors.brandPrimary
+  },
+  button: {
+    width: 150
+  }
 });
