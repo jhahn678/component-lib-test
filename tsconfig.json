@@ -14,7 +14,7 @@
     "declarationMap": true,
     "noImplicitAny": false
   },
-  "include": ["src/**/*"],                  // tsc will build from stories directory
+  "include": ["src/**/*"],                  // tsc will build from src directory
   "exclude": [
     "src/**/*.stories.tsx",                 // tsc will exclude all .stories files
     "src/**/*.stories.ts",
