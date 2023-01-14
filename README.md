@@ -60,7 +60,11 @@ The build command compiles the TypeScript into two different directories, and ru
 
 <br>
 
-From here you can open another project, and use a relative import to the build folder
+From here you can open another project, and use a relative import to the build/{web|mobile} folder
+
+<br>
+
+The demo is available on NPM at <code>npm install @jhahn678/component-lib-test</code>
 
 <br>
 
