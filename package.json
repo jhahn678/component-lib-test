@@ -1,6 +1,6 @@
 {
   "name": "@jhahn678/component-lib-test",
-  "version": "1.0.1",
+  "version": "1.0.5",
   "main": "build/index.js",
   "publishConfig": {
     "access": "public"
@@ -12,15 +12,11 @@
     "web": "expo start --web",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "build": "rm -rf build && tsc --outDir build/mobile && tsc --outDir build/web && node ./scripts/modify-imports.js"
+    "build": "rm -rf build/web && rm -rf build/mobile && tsc --outDir build/web && tsc --outDir build/mobile && node ./scripts/modify-imports.js"
   },
   "dependencies": {
-    "expo": "^45.0.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-native": "0.68.2",
-    "react-native-web": "0.17.7",
-    "replace-in-file": "^6.3.5"
+    "react-native-web": "0.17.7"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -37,6 +33,7 @@
     "@types/react-native": "~0.67.6",
     "babel-loader": "^8.3.0",
     "babel-plugin-react-native-web": "^0.18.10",
+    "replace-in-file": "^6.3.5",
     "string-replace-loader": "^3.1.0",
     "typescript": "~4.3.5"
   }

@@ -9,29 +9,43 @@ It utilizes <b><a href="https://docs.expo.dev/">Expo</a></b> which allows develo
 <br>
 
 ## Installing
+
 ```
 yarn install
 ```
 
 
 ## Open Storybook
+
 ```
 yarn run storybook
 ```
+
 <img src="assets/storybook-demo.png" alt="drawing" height="290" width="500"/>
+
+<br>
+<br>
 
 ## Launch Expo
 ** Used to launch mobile environment
+
 ```
 yarn start
 ```
+
 OR
+
 ```
 npx expo start
 ```
-Follow the command line instructions to select an environment. Scanning the QR code to launch on your device requires you to download the Expo Go app. Your device must also be connected to the same network as your computer. More information on this can be found here: https://docs.expo.dev/workflow/run-on-device/
+
+Follow the command line instructions to select an environment. Scanning the QR code to launch on your device requires you to download the Expo Go app. Your device must also be connected to the same network as your computer. More information on this can be found here: <a href="https://docs.expo.dev/workflow/run-on-device/">https://docs.expo.dev/workflow/run-on-device/</a>
+
+<br>
 
 <img src="assets/ios-simulator.png" alt="drawing" height="500"/>
+
+<br>
 <br>
 
 
@@ -43,6 +57,10 @@ yarn run build
 
 
 The build command compiles the TypeScript into two different directories, and runs a script on the web directory that replaces all instances of <code>react-native</code> imports to <code>react-native-web</code> imports
+
+<br>
+
+From here you can open another project, and use a relative import to the build folder
 
 <br>
 

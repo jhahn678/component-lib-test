@@ -1,0 +1,12 @@
+node_modules
+stories
+scripts
+assets
+.storybook
+.expo
+.gitignore
+babel.config.js
+tsconfig.json
+app.json
+README.md
+App.tsx
