@@ -1,11 +1,14 @@
 {
   "compilerOptions": {
-    "allowJs": true,                            
-    "esModuleInterop": true, 
+    "allowJs": true,
+    "esModuleInterop": true,
     "jsx": "react-native",
-    "lib": ["DOM","ESNext"],
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
     "moduleResolution": "node",
-    "noEmit": false,                            // Must be false to allow tsc output
+    "noEmit": false,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
@@ -14,9 +17,12 @@
     "declarationMap": true,
     "noImplicitAny": false
   },
-  "include": ["src/**/*"],                  // tsc will build from src directory
+  "include": [
+    "src/**/*"
+  ],
   "exclude": [
-    "src/**/*.stories.tsx",                 // tsc will exclude all .stories files
-    "src/**/*.stories.ts",
-  ]
+    "src/**/*.stories.tsx",
+    "src/**/*.stories.ts"
+  ],
+  "extends": "expo/tsconfig.base"
 }

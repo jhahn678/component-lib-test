@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from './stories/components/Button'
+import Button from './src/components/Button'
 import { StyleSheet, Text, View } from 'react-native';
-import { colors } from './stories/constants/globalStyles';
+import { colors } from './src/constants/globalStyles';
 
 export default function App() {
   return (
