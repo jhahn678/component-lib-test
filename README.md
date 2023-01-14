@@ -60,11 +60,11 @@ The build command compiles the TypeScript into two different directories, and ru
 
 <br>
 
-From here you can open another project, and use a relative import to the build/{web|mobile} folder
+From here you can open another project, and use a relative import to the build/{web|mobile} folder. The demo is available on NPM at: 
 
-<br>
-
-The demo is available on NPM at <code>npm install @jhahn678/component-lib-test</code>
+```
+npm install @jhahn678/component-lib-test
+```
 
 <br>
 
@@ -80,7 +80,5 @@ TODO:
 - [ ] Configure install pattern so consumers can <code>yarn add @library/{web/mobile}</code> without installing both bundles
 
 ## References
-
-https://medium.com/propertyfinder-engineering/shared-component-library-for-reactjs-and-react-native-with-storybook-e1abbe9d84cb
 
 https://www.npmjs.com/package/replace-in-file#replace-multiple-files-or-globs
