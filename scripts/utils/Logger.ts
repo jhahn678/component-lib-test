@@ -1,5 +1,6 @@
 import chalk from 'chalk';
 
+/** Logger Class provides prettier logs during build process */
 export class Logger {
   private name: string;
 

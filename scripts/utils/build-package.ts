@@ -1,19 +1,24 @@
 import chalk from 'chalk';
 import path from 'path'
 import { Logger } from './Logger';
-import { OutputOptions, rollup, ModuleFormat } from 'rollup';
+import { OutputOptions, rollup, ModuleFormat, RollupOutput } from 'rollup';
 import createPackageConfig, { RollupConfig } from "./create-rollup-config"
 // import generateDts from './generate-dts';
 
-export default async function compile(config: RollupConfig) {
+/**
+ * @description Compiles/writes build from rollup configuration
+ * @param config Provided through scripts/utils/create-rollup-config
+ * @returns Array of build outputs
+ */
+
+export default async function compile(config: RollupConfig): Promise<RollupOutput[]> {
     const build = await rollup(config);
     const outputs: OutputOptions[] = Array.isArray(config.output) ? config.output : [config.output];
 
     return Promise.all(outputs.map((output) => build.write(output)));
 }
 
-const logger = new Logger('Build');
-
+/** Build options are provided from scripts/build arguments */
 export interface BuildOptions {
     analyze: boolean;
     sourcemap: boolean;
@@ -21,9 +26,18 @@ export interface BuildOptions {
     formats: ModuleFormat[];
 }
 
+/**
+ * @description Creates rollup config and compiles/writes build
+ * @param packageName web or mobile
+ * @param options build options from command line
+ * @todo Move typescript compilation into this step
+ * Called in scripts/build via command line or package.json script
+ */
 export async function buildPackage(packageName: 'web' | 'mobile', options?: BuildOptions) {
 
-    const { formats = [], ...opts } = options || {};
+    const logger = new Logger('Build');
+
+    const { formats = [], ...otherOptions } = options || {};
 
     let packagePath: string;
 
@@ -47,14 +61,13 @@ export async function buildPackage(packageName: 'web' | 'mobile', options?: Buil
         //Creating rollup configs for each file path
         for (const format of formats) {
             const config = await createPackageConfig({
-                ...opts,
-                format,
-                basePath: packagePath,
+                ...otherOptions,
+                format: format,
                 name: packageName,
+                basePath: packagePath,
             });
-    
+
             logger.info(`Building to ${chalk.cyan(format)} format...`);
-            //Executing rollup on each config
             await compile(config);
         }
     

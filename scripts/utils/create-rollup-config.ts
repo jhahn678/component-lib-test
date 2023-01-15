@@ -40,12 +40,12 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
 //   }));
 
   const plugins = [
-    // // commonjs(),
-    // // babel({ babelHelpers: 'bundled' }),
+    // commonjs(),
+    // babel({ babelHelpers: 'bundled' }),
     commonjs({ include: /node_modules/ }),
     babel({ 
             babelHelpers: "runtime",
-            extensions: ['.ts', '.tsx', '.js'],
+            extensions: ['.ts', '.tsx', '.js', '.jsx'],
             presets: [["module:metro-react-native-babel-preset", { disableImportExportTransform: true }]]
         }),
     nodeExternals(),
