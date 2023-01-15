@@ -6,13 +6,13 @@
     "access": "public"
   },
   "scripts": {
-    "start": "expo start",
+    "start": "expo start -c",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "build": "npm run build:mobile && npm run build:web && ts-node scripts/build",
+    "build": "npm run build:mobile && npm run build:web && cross-env NODE_ENV=build ts-node scripts/build",
     "build:mobile": "rimraf build/mobile/{esm,cjs,lib} && tsc --outDir build/mobile/src --declarationDir build/mobile/lib",
     "build:web": "rimraf build/web/{esm,cjs,lib} && tsc --outDir build/web/src --declarationDir build/web/lib && ts-node scripts/modify-imports",
     "build:analyze": "ts-node scripts/build --package web --analyze",
@@ -21,6 +21,7 @@
   "dependencies": {
     "expo": "45.0.0",
     "react": "17.0.2",
+    "react-dom": "17.0.2",
     "react-native": "0.68.2",
     "react-native-web": "0.17.7"
   },
@@ -41,11 +42,13 @@
     "@storybook/react": "^6.5.15",
     "@storybook/testing-library": "^0.0.13",
     "@types/react": "~17.0.21",
-    "@types/react-native": "~0.67.6",
+    "@types/react-native": "^0.71.0",
     "babel-loader": "^8.3.0",
     "babel-plugin-react-native-web": "^0.18.10",
     "babel-preset-expo": "^9.2.2",
     "chalk": "4.1.2",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3",
     "esbuild": "^0.17.0",
     "metro-react-native-babel-preset": "^0.74.0",
     "replace-in-file": "^6.3.5",
