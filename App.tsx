@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from './src/components/Button'
-import { StyleSheet, Text, View } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native'
+import Button from "./src/components/Button"
 import { colors } from './src/constants/globalStyles';
 
 export default function App() {
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text: {
-    top: 80,
+    top: 60,
     position: 'absolute',
     fontSize: 24,
     fontWeight: '700',

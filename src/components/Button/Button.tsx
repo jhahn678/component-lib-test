@@ -4,7 +4,6 @@ import styles from "./styles";
 
 interface Props extends PressableProps {
     style?: StyleProp<ViewStyle>
-    children: React.ReactNode
 }
 
 const Button = ({ children, style, ...props }: Props) => {
