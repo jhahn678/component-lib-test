@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { colors } from '../../constants/globalStyles';
+import { colors, fonts } from '../../constants/globalStyles';
 
 const styles = StyleSheet.create({
     container: {
@@ -13,7 +13,8 @@ const styles = StyleSheet.create({
     text: {
         color: colors.white,
         fontWeight: '700',
-        fontSize: 14
+        fontSize: 14,
+        fontFamily: fonts.VoloSans.bold
     }
 })
 
