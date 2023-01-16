@@ -38,15 +38,15 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
     peerDepsExternal(),
     commonjs({ include: /node_modules/ }),
     babel({ 
-            babelHelpers: "runtime",
-            extensions: ['.ts', '.tsx', '.js', '.jsx'],
-            presets: [["module:metro-react-native-babel-preset", { disableImportExportTransform: true }]]
-        }),
+      babelHelpers: "runtime",
+      extensions: ['.ts', '.tsx', '.js', '.jsx'],
+      presets: [["module:metro-react-native-babel-preset", { disableImportExportTransform: true }]]
+    }),
     nodeExternals(),
     nodeResolve({ extensions: ['.ts', '.tsx', '.js', '.jsx'] }),
     esbuild({
-        sourceMap: true,
-        minify: config.format === 'umd',
+      sourceMap: true,
+      minify: config.format === 'umd',
     }),
   ];
 
@@ -88,8 +88,11 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
     );
   }
 
+  // Rollup executes after TS compilation, which outputs to build/{package}/src
+  const defaultInput = path.resolve(config.basePath, 'src/index.js');
+
   return {
-    input: config?.entry || path.resolve(config.basePath, 'src/index.js'),
+    input: config?.entry || defaultInput,
     output,
     plugins,
   };
