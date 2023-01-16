@@ -8,9 +8,8 @@ declare const styles: {
         padding: number;
     };
     text: {
-        color: "white";
-        fontWeight: "700";
         fontSize: number;
+        color: "white";
         fontFamily: "VoloSansPro-Bold";
     };
 };

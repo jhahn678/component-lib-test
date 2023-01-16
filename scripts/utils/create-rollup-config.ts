@@ -6,6 +6,7 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { babel } from '@rollup/plugin-babel'
 import visualizer from 'rollup-plugin-visualizer';
 import esbuild from 'rollup-plugin-esbuild';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 
 export interface RollupConfig extends RollupOptions{
     output: OutputOptions | OutputOptions[]
@@ -34,6 +35,7 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
 
 
   const plugins = [
+    peerDepsExternal(),
     commonjs({ include: /node_modules/ }),
     babel({ 
             babelHelpers: "runtime",
