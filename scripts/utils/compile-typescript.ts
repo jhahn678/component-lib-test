@@ -5,9 +5,9 @@ const compileTypescript = async (packageName: PackageName) => {
     await execa('yarn', [
         'tsc', 
         '--outDir', 
-        `test-build/${packageName}/src`, 
+        `build/${packageName}/src`, 
         '--declarationDir', 
-        `test-build/${packageName}/lib`
+        `build/${packageName}/lib`
     ])
 }
 

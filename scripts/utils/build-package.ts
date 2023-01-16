@@ -78,7 +78,8 @@ export async function buildPackage(packageName: PackageName, options?: BuildOpti
                     "build/web/**/*.tsx"
                 ],
                 from: /from [",']react-native[",']/g,
-                to: "from 'react-native-web'"
+                to: "from 'react-native-web'",
+                allowEmptyPaths: true,
             })
             logger.info(`Modified web imports to use ${chalk.cyan('react-native-web')}`)
         }

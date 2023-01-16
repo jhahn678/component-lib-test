@@ -14,19 +14,17 @@
     "web": "expo start --web",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "build": "npm run prebuild && cross-env NODE_ENV=build ts-node scripts/build",
-    "build:web": "npm run prebuild:web && cross-env NODE_ENV=build ts-node scripts/build --package web",
-    "build:mobile": "npm run prebuild:mobile && cross-env NODE_ENV=build ts-node scripts/build --package mobile",
-    "build:analyze": "npm run prebuild && cross-env NODE_ENV=build ts-node scripts/build --analyze"
+    "build": "cross-env NODE_ENV=build ts-node scripts/build",
+    "build:web": "cross-env NODE_ENV=build ts-node scripts/build --package web",
+    "build:mobile": "cross-env NODE_ENV=build ts-node scripts/build --package mobile",
+    "build:analyze": "cross-env NODE_ENV=build ts-node scripts/build --analyze"
   },
   "dependencies": {
-    "execa": "5.1.1",
     "expo": "45.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-native": "0.68.2",
-    "react-native-web": "0.17.7",
-    "require-from-string": "^2.0.2"
+    "react-native-web": "0.17.7"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -59,9 +57,11 @@
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.3",
     "esbuild": "^0.17.0",
+    "execa": "5.1.1",
     "fast-glob": "^3.2.12",
     "metro-react-native-babel-preset": "^0.74.0",
     "replace-in-file": "^6.3.5",
+    "require-from-string": "^2.0.2",
     "rimraf": "^4.0.5",
     "rollup": "^3.10.0",
     "rollup-plugin-esbuild": "^5.0.0",
