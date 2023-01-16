@@ -1,4 +1,4 @@
-# Component Library Test
+# React Native Web Component Library
 
 ## About
 
