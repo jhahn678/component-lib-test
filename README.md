@@ -3,7 +3,7 @@
 ## About
 
 This is a basic setup for a cross-platform component library using React-Native, TypeScript and Storybook.
-It utilizes <b><a href="https://docs.expo.dev/">Expo</a></b> which allows developers to easily spin up a playground on their mobile-device OR simulator to view their component as they're making changes.
+It utilizes <b><a href="https://docs.expo.dev/">Expo</a></b>, which allows developers to easily spin up a playground on their mobile-device OR simulator to view their component as they're making changes, without having to publish or deploy code. Build scripts
 
 <hr>
 <br>
@@ -47,9 +47,15 @@ Follow the command line instructions to select an environment. Scanning the QR c
 ```
 yarn build
 ```
+The build command compiles the code into the <code>build/{package}</code> directory. It executes in the following phases:
 
+- Remove output directories from previous build
+- Compile TypeScript to build/{package}/src and declarations to build/{package}/lib
+- Modify web <code>react-native</code> imports to <code>react-native-web</code> 
+- Compile code to EsModule and CommonJs with Rollup
+- Remove build/{package}/src directory
 
-The build command compiles the TypeScript into two different directories, and runs a script on the web directory that replaces all instances of <code>react-native</code> imports to <code>react-native-web</code> imports<br>
+<br>
 
 To test the builds locally, you can open up another project and use a relative import to the build/{web|mobile} folder, ensuring that all peer dependecies are installed.
 
@@ -96,30 +102,20 @@ yarn build:mobile
 yarn build:web
 ```
 ### Build and create package analytics 
-<i>@build/package/lib/stats.html</i>
+<i>@build/{package}/lib/stats.html</i>
 
 ```
 yarn build:analyze
 ```
-### Compile TypeScript for web package
-```
-yarn tsc:web
-```
-### Compile TypeScript for mobile package
-```
-yarn tsc:mobile
-```
 
-<br>
-
-
-<hr><br>
+<br><hr><br>
 
 TODO:
 
 - [x] Functioning build process
 - [ ] Configure dependencies so that web consumers don't have to install additional packages manually ?? If possible ??
 - [ ] Automatic generation of Prop-Types
+- [ ] Automatic versioning
 - [x] Configure NPM publishing
 - [x] Configure install pattern so consumers can <code>yarn add @library/{web/mobile}</code> without installing both bundles
 
