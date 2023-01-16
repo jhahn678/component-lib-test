@@ -6,7 +6,6 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { babel } from '@rollup/plugin-babel'
 import visualizer from 'rollup-plugin-visualizer';
 import esbuild from 'rollup-plugin-esbuild';
-// import { getPackagesList } from '../../scripts/utils/get-packages-list';
 
 export interface RollupConfig extends RollupOptions{
     output: OutputOptions | OutputOptions[]
@@ -17,31 +16,24 @@ interface PkgConfigInput {
     basePath: string
     format: ModuleFormat
     entry?: string
-    minify?: boolean
     sourcemap?: boolean
     analyze?: boolean
 }
 
 export default async function createPackageConfig(config: PkgConfigInput): Promise<RollupConfig> {
-    //Get package.json from config
+    
+    // // Aliasing dependencies
     // const packageJson = JSON.parse(
     //     fs.readFileSync(path.join(config.basePath, './package.json')).toString('utf-8')
     // );
+    // const pkgList = await getPackagesList();
+    // const aliasEntries: Alias[] = pkgList.map((pkg) => ({
+    //     find: new RegExp(`^${pkg.packageJson.name}`),
+    //     replacement: path.resolve(pkg.path, 'src'),
+    // }));
 
-  //Get universal list of packages
-//   const pkgList = await getPackagesList();
-
-  //Aliasing package list
-    //Creating a regex from package name
-    //unsure ------
-//   const aliasEntries: Alias[] = pkgList.map((pkg) => ({
-//     find: new RegExp(`^${pkg.packageJson.name}`),
-//     replacement: path.resolve(pkg.path, 'src'),
-//   }));
 
   const plugins = [
-    // commonjs(),
-    // babel({ babelHelpers: 'bundled' }),
     commonjs({ include: /node_modules/ }),
     babel({ 
             babelHelpers: "runtime",
