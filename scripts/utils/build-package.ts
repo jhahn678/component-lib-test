@@ -1,9 +1,11 @@
-import chalk from 'chalk';
+import fs from 'fs'
 import path from 'path'
+import chalk from 'chalk';
 import { Logger } from './Logger';
 import { OutputOptions, rollup, ModuleFormat, RollupOutput } from 'rollup';
 import createPackageConfig, { RollupConfig } from "./create-rollup-config"
-// import generateDts from './generate-dts';
+import compileTypescript from './compile-typescript';
+import { replaceInFile } from 'replace-in-file';
 
 /**
  * @description Compiles/writes build from rollup configuration
@@ -26,6 +28,8 @@ export interface BuildOptions {
     formats: ModuleFormat[];
 }
 
+export type PackageName = 'web' | 'mobile';
+
 /**
  * @description Creates rollup config and compiles/writes build
  * @param packageName web or mobile
@@ -33,7 +37,7 @@ export interface BuildOptions {
  * @todo Move typescript compilation into this step
  * Called in scripts/build via command line or package.json script
  */
-export async function buildPackage(packageName: 'web' | 'mobile', options?: BuildOptions) {
+export async function buildPackage(packageName: PackageName, options?: BuildOptions) {
 
     const logger = new Logger('Build');
 
@@ -55,10 +59,24 @@ export async function buildPackage(packageName: 'web' | 'mobile', options?: Buil
     try {
         const startTime = Date.now();
 
-        // Calling tsconfig to generate type declartions
-        // await generateDts(packagePath);
+        // Compile typescript to package directory
+        await compileTypescript(packageName);
+
+        if(packageName === 'web'){
+            await replaceInFile({
+                files: [
+                    "build/web/**/*.js",
+                    "build/web/**/*.jsx", 
+                    "build/web/**/*.ts", 
+                    "build/web/**/*.tsx"
+                ],
+                from: /from [",']react-native[",']/g,
+                to: "from 'react-native-web'"
+            })
+            logger.info(`Modified web imports to use ${chalk.cyan('react-native-web')}`)
+        }
     
-        //Creating rollup configs for each file path
+        // Create rollup configs for each format and create bundle
         for (const format of formats) {
             const config = await createPackageConfig({
                 ...otherOptions,
@@ -76,6 +94,10 @@ export async function buildPackage(packageName: 'web' | 'mobile', options?: Buil
                 `${((Date.now() - startTime) / 1000).toFixed(2)}s`
             )}`
         );
+
+        // Postbuild - removing src folder
+        fs.rmSync(`build/${packageName}/src`, { recursive: true, force: true });
+
       } catch (err) {
         logger.error(`Failed to compile package: ${chalk.cyan(packageName)}`);
         process.stdout.write(`${err.toString('minimal')}\n`);
