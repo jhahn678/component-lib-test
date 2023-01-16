@@ -21,6 +21,8 @@
   },
   "dependencies": {
     "expo": "45.0.0",
+    "expo-font": "~10.1.0",
+    "expo-splash-screen": "~0.15.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-native": "0.68.2",
@@ -59,6 +61,7 @@
     "esbuild": "^0.17.0",
     "execa": "5.1.1",
     "fast-glob": "^3.2.12",
+    "file-loader": "^6.2.0",
     "metro-react-native-babel-preset": "^0.74.0",
     "replace-in-file": "^6.3.5",
     "require-from-string": "^2.0.2",
