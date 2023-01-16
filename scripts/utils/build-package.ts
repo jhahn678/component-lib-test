@@ -56,12 +56,19 @@ export async function buildPackage(packageName: PackageName, options?: BuildOpti
 
     logger.info(`Building package ${chalk.cyan(packageName)}`);
 
+    // Prebuild: Removing cjs/esm/lib directories
+    fs.rmSync(`build/${packageName}/cjs`, { recursive: true, force: true });
+    fs.rmSync(`build/${packageName}/esm`, { recursive: true, force: true });
+    fs.rmSync(`build/${packageName}/lib`, { recursive: true, force: true });
+
     try {
         const startTime = Date.now();
 
         // Compile typescript to package directory
         await compileTypescript(packageName);
 
+        // For the web package, imports from react-native 
+        // must be changed to react-native-web
         if(packageName === 'web'){
             await replaceInFile({
                 files: [
@@ -95,7 +102,7 @@ export async function buildPackage(packageName: PackageName, options?: BuildOpti
             )}`
         );
 
-        // Postbuild - removing src folder
+        // Postbuild: Removing src folder from directory
         fs.rmSync(`build/${packageName}/src`, { recursive: true, force: true });
 
       } catch (err) {
