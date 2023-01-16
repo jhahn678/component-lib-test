@@ -1,6 +1,6 @@
 {
     "name": "@jhahn678/mobile",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "license": "MIT",
     "author": "Julian Hahn",
     "main": "cjs/index.js",
