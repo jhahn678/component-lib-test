@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { PressableProps, StyleProp, ViewStyle, TextStyle } from "react-native";
 interface Props extends PressableProps {
     style?: StyleProp<ViewStyle>;
