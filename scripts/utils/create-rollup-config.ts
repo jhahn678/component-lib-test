@@ -1,19 +1,20 @@
 import path from 'path';
-import { RollupOptions, OutputOptions, ModuleFormat } from 'rollup';
+import { RollupOptions, OutputOptions, ModuleFormat, InputPluginOption } from 'rollup';
 import commonjs from '@rollup/plugin-commonjs';
 import nodeExternals from 'rollup-plugin-node-externals';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
-import { babel } from '@rollup/plugin-babel'
+import { babel, RollupBabelInputPluginOptions } from '@rollup/plugin-babel'
 import visualizer from 'rollup-plugin-visualizer';
 import esbuild from 'rollup-plugin-esbuild';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import { PackageName } from './build-package';
 
 export interface RollupConfig extends RollupOptions{
     output: OutputOptions | OutputOptions[]
 }
 
 interface PkgConfigInput {
-    name: string,
+    name: PackageName
     basePath: string
     format: ModuleFormat
     entry?: string
@@ -33,23 +34,31 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
     //     replacement: path.resolve(pkg.path, 'src'),
     // }));
 
+  const babelOptions: RollupBabelInputPluginOptions = {
+    babelHelpers: "runtime",
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    presets: [
+      ["module:metro-react-native-babel-preset", { disableImportExportTransform: true }]
+    ]
+  };
+
+  if(config.name === 'web'){
+    babelOptions.plugins = ['react-native-web']
+  }
 
   const plugins = [
-    peerDepsExternal(),
     commonjs({ include: /node_modules/ }),
-    babel({ 
-      babelHelpers: "runtime",
-      extensions: ['.ts', '.tsx', '.js', '.jsx'],
-      presets: [["module:metro-react-native-babel-preset", { disableImportExportTransform: true }]],
-
-    }),
+    babel(babelOptions),
     nodeExternals(),
     nodeResolve({ extensions: ['.ts', '.tsx', '.js', '.jsx'] }),
+    peerDepsExternal({ 
+      packageJsonPath: path.resolve(config.basePath, 'package.json') 
+    }),
     esbuild({
       sourceMap: true,
       minify: config.format === 'umd',
     }),
-  ];
+  ] as InputPluginOption[];
 
   const output: OutputOptions = {
     name: config.name,

@@ -67,23 +67,6 @@ export async function buildPackage(packageName: PackageName, options?: BuildOpti
 
         // Compile typescript to package directory
         await compileTypescript(packageName);
-
-        // For the web package, imports from react-native 
-        // must be changed to react-native-web
-        if(packageName === 'web'){
-            await replaceInFile({
-                files: [
-                    "build/web/**/*.js",
-                    "build/web/**/*.jsx", 
-                    "build/web/**/*.ts", 
-                    "build/web/**/*.tsx"
-                ],
-                from: /from [",']react-native[",']/g,
-                to: "from 'react-native-web'",
-                allowEmptyPaths: true,
-            })
-            logger.info(`Modified web imports to use ${chalk.cyan('react-native-web')}`)
-        }
     
         // Create rollup configs for each format and create bundle
         for (const format of formats) {
