@@ -6,7 +6,6 @@ This is a basic setup for a cross-platform component library using React-Native/
 It utilizes <b><a href="https://docs.expo.dev/">Expo</a></b> in development alongside storybook, which allows developers to easily spin up a playground on their mobile-device OR simulator to view their component as they're making changes, <i>without</i> having to publish or deploy code. Build scripts compile the code to individual web and mobile packages, minimizing bundle size and complexity of setup by the consumer.
 
 <hr>
-<br>
 
 ## Installing
 
@@ -25,7 +24,7 @@ yarn storybook
 
 <img src="assets/storybook-demo.png" alt="drawing" height="290" width="500"/>
 
-<br><br>
+<br>
 
 ## Launch Expo
 <strong>Used to launch mobile environment</strong>
@@ -40,7 +39,7 @@ Follow the command line instructions to select an environment. Scanning the QR c
 
 <img src="assets/ios-simulator.png" alt="drawing" height="500"/>
 
-<br><br>
+<br>
 
 # Building
 
@@ -108,7 +107,7 @@ yarn build:web
 yarn build:analyze
 ```
 
-<br><hr><br>
+<br><hr>
 
 TODO:
 
