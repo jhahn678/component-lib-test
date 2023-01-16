@@ -7,7 +7,7 @@
     "module": "esm/index.js",
     "types": "lib/index.d.ts",
     "publishConfig": {
-      "access": "public"
+        "access": "public"
     },
     "sideEffects": false,
     "peerDependencies": {
@@ -16,4 +16,3 @@
     },
     "devDependencies": {}
 }
-  

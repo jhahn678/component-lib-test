@@ -40,7 +40,8 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
     babel({ 
       babelHelpers: "runtime",
       extensions: ['.ts', '.tsx', '.js', '.jsx'],
-      presets: [["module:metro-react-native-babel-preset", { disableImportExportTransform: true }]]
+      presets: [["module:metro-react-native-babel-preset", { disableImportExportTransform: true }]],
+
     }),
     nodeExternals(),
     nodeResolve({ extensions: ['.ts', '.tsx', '.js', '.jsx'] }),
@@ -92,8 +93,8 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
   const defaultInput = path.resolve(config.basePath, 'src/index.js');
 
   return {
-    input: config?.entry || defaultInput,
     output,
     plugins,
+    input: config?.entry || defaultInput,
   };
 }
