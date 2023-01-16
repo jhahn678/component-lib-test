@@ -6,6 +6,7 @@ import { OutputOptions, rollup, ModuleFormat, RollupOutput } from 'rollup';
 import createPackageConfig, { RollupConfig } from "./create-rollup-config"
 import compileTypescript from './compile-typescript';
 import { replaceInFile } from 'replace-in-file';
+import configurePackageJson from './configure-package-json';
 
 /**
  * @description Compiles/writes build from rollup configuration
@@ -89,6 +90,9 @@ export async function buildPackage(packageName: PackageName, options?: BuildOpti
 
         // Postbuild: Removing src folder from directory
         fs.rmSync(`build/${packageName}/src`, { recursive: true, force: true });
+
+        // Configure and add package.json
+        fs.writeFileSync(`build/${packageName}/package.json`, configurePackageJson(packageName))
 
       } catch (err) {
         logger.error(`Failed to compile package: ${chalk.cyan(packageName)}`);
