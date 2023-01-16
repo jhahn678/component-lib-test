@@ -64,6 +64,11 @@ To test the builds locally, you can open up another project and use a relative i
 
 
 ### The demos are available on NPM
+
+<a href="https://www.npmjs.com/package/@jhahn678/web"><p>https://www.npmjs.com/package/@jhahn678/web</p></a>
+
+<a href="https://www.npmjs.com/package/@jhahn678/mobile"><p>https://www.npmjs.com/package/@jhahn678/mobile</p></a>
+
 <br>
 
 ### In an existing web project:
