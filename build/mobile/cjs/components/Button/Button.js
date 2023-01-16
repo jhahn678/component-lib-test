@@ -20,8 +20,8 @@ var __rest = function(s, e) {
   return t;
 };
 var Button = function Button2(_a) {
-  var children = _a.children, style = _a.style, props = __rest(_a, ["children", "style"]);
-  return jsxRuntime.jsx(reactNative.Pressable, Object.assign({}, props, { style: [styles.default.container, style], children: typeof children === "string" ? jsxRuntime.jsx(reactNative.Text, { style: styles.default.text, children }) : children }));
+  var children = _a.children, style = _a.style, labelStyle = _a.labelStyle, props = __rest(_a, ["children", "style", "labelStyle"]);
+  return jsxRuntime.jsx(reactNative.Pressable, Object.assign({}, props, { style: [styles.default.container, style], children: typeof children === "string" ? jsxRuntime.jsx(reactNative.Text, { style: [styles.default.text, labelStyle], children }) : children }));
 };
 
 exports.default = Button;

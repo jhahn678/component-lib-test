@@ -11,6 +11,7 @@ declare const styles: {
         color: "white";
         fontWeight: "700";
         fontSize: number;
+        fontFamily: "VoloSansPro-Bold";
     };
 };
 export default styles;

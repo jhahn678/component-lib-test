@@ -16,8 +16,8 @@ var __rest = function(s, e) {
   return t;
 };
 var Button = function Button2(_a) {
-  var children = _a.children, style = _a.style, props = __rest(_a, ["children", "style"]);
-  return jsx(Pressable, Object.assign({}, props, { style: [styles.container, style], children: typeof children === "string" ? jsx(Text, { style: styles.text, children }) : children }));
+  var children = _a.children, style = _a.style, labelStyle = _a.labelStyle, props = __rest(_a, ["children", "style", "labelStyle"]);
+  return jsx(Pressable, Object.assign({}, props, { style: [styles.container, style], children: typeof children === "string" ? jsx(Text, { style: [styles.text, labelStyle], children }) : children }));
 };
 
 export { Button as default };
