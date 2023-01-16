@@ -11,9 +11,8 @@ const styles = StyleSheet.create({
         padding: 10
     },
     text: {
+        fontSize: 16,
         color: colors.white,
-        fontWeight: '700',
-        fontSize: 14,
         fontFamily: fonts.VoloSans.bold
     }
 })
