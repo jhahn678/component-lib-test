@@ -1,6 +1,7 @@
 'use strict';
 
-var reactNativeWeb = require('react-native-web');
+var Dimensions = require('react-native-web/dist/exports/Dimensions');
+var Appearance = require('react-native-web/dist/exports/Appearance');
 
 var borderRadius = 5;
 var borderRadiusWide = 20;
@@ -18,10 +19,10 @@ var container = { flex: 1, flexDirection: "column", justifyContent: "center", al
 var shadow = { shadowRadius: 3, shadowOpacity: 0.2, shadowColor: colors.black, shadowOffset: { height: 1, width: 0 }, elevation: 4 };
 var bottomBoxPadding = 35;
 var margins = { smallSide: 10 };
-var screenHeight = reactNativeWeb.Dimensions.get("window").height;
-var screenWidth = reactNativeWeb.Dimensions.get("window").width;
+var screenHeight = Dimensions.get("window").height;
+var screenWidth = Dimensions.get("window").width;
 var getPhoneThemeTextColor = function getPhoneThemeTextColor2() {
-  return reactNativeWeb.Appearance.getColorScheme() === "dark" ? colors.white : colors.black;
+  return Appearance.getColorScheme() === "dark" ? colors.white : colors.black;
 };
 
 exports.blues = blues;

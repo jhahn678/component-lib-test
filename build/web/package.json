@@ -1,6 +1,6 @@
 {
     "name": "@jhahn678/web",
-    "version": "1.0.5",
+    "version": "1.0.7",
     "license": "MIT",
     "author": "Julian Hahn",
     "main": "cjs/index.js",

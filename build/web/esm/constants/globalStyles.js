@@ -1,4 +1,5 @@
-import { Dimensions, Appearance } from 'react-native-web';
+import Dimensions from 'react-native-web/dist/exports/Dimensions';
+import Appearance from 'react-native-web/dist/exports/Appearance';
 
 var borderRadius = 5;
 var borderRadiusWide = 20;

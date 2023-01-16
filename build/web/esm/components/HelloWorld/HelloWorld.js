@@ -1,5 +1,6 @@
 import 'react';
-import { View, Text } from 'react-native-web';
+import View from 'react-native-web/dist/exports/View';
+import Text from 'react-native-web/dist/exports/Text';
 import styles from './styles.js';
 import { jsx } from 'react/jsx-runtime';
 

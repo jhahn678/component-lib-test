@@ -1,5 +1,6 @@
 import 'react';
-import { Pressable, Text } from 'react-native-web';
+import Text from 'react-native-web/dist/exports/Text';
+import Pressable from 'react-native-web/dist/exports/Pressable';
 import styles from './styles.js';
 import { jsx } from 'react/jsx-runtime';
 

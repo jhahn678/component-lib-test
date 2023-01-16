@@ -1,4 +1,4 @@
-import { ViewStyle } from 'react-native-web';
+import { ViewStyle } from 'react-native';
 export declare const borderRadius = 5;
 export declare const borderRadiusWide = 20;
 export declare const borderWidth = 1;
