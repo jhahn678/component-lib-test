@@ -1,11 +1,33 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { View, Text, StyleSheet } from 'react-native'
 import Button from "./src/components/Button"
-import { colors } from './src/constants/globalStyles';
+import { colors, fonts } from './src/constants/globalStyles';
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+
+SplashScreen.preventAutoHideAsync();
 
 export default function App() {
+
+  const [fontsLoaded] = useFonts({
+    ['VoloSansPro']: require('./assets/fonts/VoloSansPro.otf'),
+    [fonts.VoloSans.bold]: require('./assets/fonts/VoloSansPro-Bold.otf'),
+    [fonts.VoloSans.ultra]: require('./assets/fonts/VoloSansPro-Ultra.otf'),
+    [fonts.VoloSans.regular]: require('./assets/fonts/VoloSansPro-Regular.otf'),
+  });
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
+  
   return (
-    <View style={styles.container}>
+    <View style={styles.container} onLayout={onLayoutRootView}>
       <Text style={styles.text}>Component Playground</Text>
       <Button style={styles.button}>Hello World</Button>
     </View>
@@ -23,10 +45,10 @@ const styles = StyleSheet.create({
     top: 60,
     position: 'absolute',
     fontSize: 24,
-    fontWeight: '700',
-    color: colors.brandPrimary
+    color: colors.brandPrimary,
+    fontFamily: fonts.VoloSans.bold
   },
   button: {
-    width: 150
+    width: 150,
   }
 });
