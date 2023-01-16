@@ -2,8 +2,8 @@
 
 ## About
 
-This is a basic setup for a cross-platform component library using React-Native, TypeScript and Storybook.
-It utilizes <b><a href="https://docs.expo.dev/">Expo</a></b>, which allows developers to easily spin up a playground on their mobile-device OR simulator to view their component as they're making changes, without having to publish or deploy code. Build scripts
+This is a basic setup for a cross-platform component library using React-Native/React-Native-Web, TypeScript and Storybook.
+It utilizes <b><a href="https://docs.expo.dev/">Expo</a></b> in development alongside storybook, which allows developers to easily spin up a playground on their mobile-device OR simulator to view their component as they're making changes, <i>without</i> having to publish or deploy code. Build scripts compile the code to individual web and mobile packages, minimizing bundle size and complexity of setup by the consumer.
 
 <hr>
 <br>
