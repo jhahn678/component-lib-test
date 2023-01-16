@@ -92,11 +92,15 @@ yarn ios
 ```
 yarn web
 ```
-### Launch on iOS simulator
+### Build mobile and web packages
+```
+yarn build
+```
+### Build mobile package
 ```
 yarn build:mobile
 ```
-### Launch on iOS simulator
+### Build web package
 ```
 yarn build:web
 ```
