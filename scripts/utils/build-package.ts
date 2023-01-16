@@ -31,11 +31,12 @@ export interface BuildOptions {
 export type PackageName = 'web' | 'mobile';
 
 /**
- * @description Creates rollup config and compiles/writes build
+ * called in scripts/build
+ * @prebuild removes cjs/esm/lib from previous build
+ * @build compiles/writes build from rollup configuration
+ * @postbuild removes src folder from directory
  * @param packageName web or mobile
  * @param options build options from command line
- * @todo Move typescript compilation into this step
- * Called in scripts/build via command line or package.json script
  */
 export async function buildPackage(packageName: PackageName, options?: BuildOptions) {
 
