@@ -44,9 +44,13 @@ const getDependenciesList = (): { [k: string]: string } | null => {
     const packageJson = fs.readFileSync("package.json", { encoding: 'utf-8' });
     // Parse object and get dependencies lists
     const { dependencies } = JSON.parse(packageJson);
-    // Filter out React & Expo related deps
+    // Filter out unwanted deps
     const filteredEntries = Object.entries<string>(dependencies)
-        .filter(([x]) => x !== 'expo' && !x.includes('expo') && !exclude.includes(x));
+        .filter(([x]) => 
+            !x.includes('expo')        // Remove all expo related packages
+            && !exclude.includes(x)    // Remove all packages in excludes array
+            && !x.includes('@types')   // SAFEGUARD - remove all @types packages (should be in devDeps anyways)
+        );
     // Return null here to skip adding empty dependencies object in next step
     if(filteredEntries.length === 0) return null;
     return Object.fromEntries<string>(filteredEntries);

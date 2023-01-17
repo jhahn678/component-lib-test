@@ -5,7 +5,6 @@ import { Logger } from './Logger';
 import { OutputOptions, rollup, ModuleFormat, RollupOutput } from 'rollup';
 import createPackageConfig, { RollupConfig } from "./create-rollup-config"
 import compileTypescript from './compile-typescript';
-import { replaceInFile } from 'replace-in-file';
 import configurePackageJson from './configure-package-json';
 
 /**
@@ -58,10 +57,8 @@ export async function buildPackage(packageName: PackageName, options?: BuildOpti
 
     logger.info(`Building package ${chalk.cyan(packageName)}`);
 
-    // Prebuild: Removing cjs/esm/lib directories
-    fs.rmSync(`build/${packageName}/cjs`, { recursive: true, force: true });
-    fs.rmSync(`build/${packageName}/esm`, { recursive: true, force: true });
-    fs.rmSync(`build/${packageName}/lib`, { recursive: true, force: true });
+    // Prebuild: Remove previous build folder
+    fs.rmSync(`build/${packageName}`, { recursive: true, force: true });
 
     try {
         const startTime = Date.now();
