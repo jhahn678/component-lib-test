@@ -6,17 +6,11 @@
 
 module.exports = function(api) {
   api.cache(true);
-  if(process.env.NODE_ENV === 'build'){
+  if(process.env.NODE_ENV !== 'build'){
     return {
-      plugins: ["@babel/plugin-transform-runtime"],
       presets: [
-        ["module:metro-react-native-babel-preset", { disableImportExportTransform: true }]
-      ]
+        'babel-preset-expo'
+      ],
     };
   }
-  return {
-    presets: [
-      'babel-preset-expo'
-    ],
-  };
 };

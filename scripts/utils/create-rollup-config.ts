@@ -6,7 +6,6 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { babel, RollupBabelInputPluginOptions } from '@rollup/plugin-babel'
 import visualizer from 'rollup-plugin-visualizer';
 import esbuild from 'rollup-plugin-esbuild';
-import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import { PackageName } from './build-package';
 
 export interface RollupConfig extends RollupOptions{
@@ -23,27 +22,22 @@ interface PkgConfigInput {
 }
 
 export default async function createPackageConfig(config: PkgConfigInput): Promise<RollupConfig> {
-    
-    // // Aliasing dependencies
-    // const packageJson = JSON.parse(
-    //     fs.readFileSync(path.join(config.basePath, './package.json')).toString('utf-8')
-    // );
-    // const pkgList = await getPackagesList();
-    // const aliasEntries: Alias[] = pkgList.map((pkg) => ({
-    //     find: new RegExp(`^${pkg.packageJson.name}`),
-    //     replacement: path.resolve(pkg.path, 'src'),
-    // }));
+
+  // Transforms imports for babel helpers to reference @babel/runtime
+  let babelPlugins: string[] = ["@babel/plugin-transform-runtime"];
 
   const babelOptions: RollupBabelInputPluginOptions = {
     babelHelpers: "runtime",
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    presets: [
+      ["module:metro-react-native-babel-preset", { disableImportExportTransform: true }]
+    ]
   };
 
-  if(config.name === 'web'){
-    babelOptions.plugins = ['react-native-web']
-  }
+  // Transforms react-native imports in the web build
+  if(config.name === 'web') babelPlugins.push('react-native-web')
 
-  const packageJsonPath = path.resolve(config.basePath, 'package.json');
+  babelOptions.plugins = babelPlugins;
 
   const plugins = [
     commonjs({ include: /node_modules/ }),
