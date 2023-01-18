@@ -1,4 +1,3 @@
-import React from 'react'
 import { Text, Pressable, PressableProps, StyleProp, ViewStyle, TextStyle } from "react-native";
 import styles from "./styles";
 

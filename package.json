@@ -20,6 +20,7 @@
     "build:analyze": "cross-env NODE_ENV=build ts-node scripts/build --analyze"
   },
   "dependencies": {
+    "@babel/runtime": "^7.20.7",
     "expo": "45.0.0",
     "expo-font": "~10.1.0",
     "expo-splash-screen": "~0.15.1",
@@ -30,6 +31,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "@babel/plugin-transform-runtime": "^7.19.6",
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-commonjs": "^24.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",

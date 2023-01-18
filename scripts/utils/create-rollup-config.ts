@@ -37,27 +37,20 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
   const babelOptions: RollupBabelInputPluginOptions = {
     babelHelpers: "runtime",
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
-    presets: [
-      ["module:metro-react-native-babel-preset", { disableImportExportTransform: true }]
-    ]
   };
 
   if(config.name === 'web'){
     babelOptions.plugins = ['react-native-web']
   }
 
+  const packageJsonPath = path.resolve(config.basePath, 'package.json');
+
   const plugins = [
     commonjs({ include: /node_modules/ }),
     babel(babelOptions),
-    nodeExternals(),
     nodeResolve({ extensions: ['.ts', '.tsx', '.js', '.jsx'] }),
-    peerDepsExternal({ 
-      packageJsonPath: path.resolve(config.basePath, 'package.json') 
-    }),
-    esbuild({
-      sourceMap: true,
-      minify: config.format === 'umd',
-    }),
+    nodeExternals(),
+    esbuild({ minify: config.format === 'umd' }),
   ] as InputPluginOption[];
 
   const output: OutputOptions = {

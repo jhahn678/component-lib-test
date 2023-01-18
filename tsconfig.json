@@ -15,7 +15,11 @@
     "target": "ES6",
     "declaration": true,
     "declarationMap": true,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "paths": {
+      "react": ["./node_modules/@types/react"],
+      "react-native": ["./node_modules/@types/react-native"]
+    }
   },
   "include": [
     "src/**/*"

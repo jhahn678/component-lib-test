@@ -70,7 +70,7 @@ export async function buildPackage(packageName: PackageName, options?: BuildOpti
         for (const format of formats) {
             const config = await createPackageConfig({
                 ...otherOptions,
-                format: format,
+                format,
                 name: packageName,
                 basePath: packagePath,
             });

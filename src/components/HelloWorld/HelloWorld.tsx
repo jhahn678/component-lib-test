@@ -1,12 +1,29 @@
-import React from 'react'
-import { View, Text, Image } from "react-native";
+import { useState } from "react";
+import { View, Text, Pressable } from "react-native";
+import { colors } from "../../constants";
 import styles from './styles'
 
 const HelloWorld = () => {
+
+  const [toggled, setToggled] = useState(false);
+
   return (
-    <View style={styles.container}>
-        <Text style={styles.text}>Hello World</Text>
-    </View>
+    <Pressable onPress={() => setToggled(x => !x)}>
+      <View style={[
+        styles.container,
+        { backgroundColor: toggled ? colors.brandSecondary : colors.brandPrimary,}
+      ]}>
+        <Text 
+          style={[
+            styles.text,
+            { color: toggled ? colors.brandPrimary : colors.brandSecondary }
+          ]}
+        >
+          Hello World
+        </Text>
+      </View>
+    </Pressable>
+    // <View></View>
   )
 }
 
