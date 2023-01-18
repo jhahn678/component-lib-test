@@ -6,11 +6,12 @@
 
 module.exports = function(api) {
   api.cache(true);
-  if(process.env.NODE_ENV !== 'build'){
-    return {
-      presets: [
-        'babel-preset-expo'
-      ],
-    };
+  if(process.env.NODE_ENV === 'build'){
+    return {};
   }
+  return {
+    presets: [
+      'babel-preset-expo'
+    ],
+  };
 };
