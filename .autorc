@@ -1,0 +1,10 @@
+{
+  "plugins": [
+    [
+      "npm",
+      {
+        "subPackageChangelogs": false
+      }
+    ]
+  ]
+}
