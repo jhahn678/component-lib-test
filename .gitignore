@@ -19,4 +19,4 @@ build/*
 build/web/*
 build/mobile/*
 !build/web/package.json
-!build/mobile/packages.json
+!build/mobile/package.json
