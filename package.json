@@ -1,8 +1,10 @@
 {
   "name": "@jhahn678/component-lib-test",
-  "version": "1.0.8",
+  "version": "1.0.7",
   "license": "MIT",
   "main": "node_modules/expo/AppEntry.js",
+  "repository": "jhahn678/component-lib-test",
+  "author": "Julian Hahn <jhahn678@yahoo.com>",
   "publishConfig": {
     "access": "public"
   },
@@ -95,12 +97,5 @@
     "ts-node": "^10.9.1",
     "typescript": "~4.3.5",
     "yargs": "^17.6.2"
-  },
-  "repository": "jhahn678/component-lib-test",
-  "author": "Julian Hahn <jhahn678@yahoo.com>",
-  "auto": {
-    "plugins": [
-      "npm"
-    ]
   }
 }
