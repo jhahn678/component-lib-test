@@ -1,5 +1,7 @@
 {
-  "packages": ["build/*"],
+  "packages": [
+    "build/*"
+  ],
   "version": "1.0.20",
   "command": {
     "publish": {
