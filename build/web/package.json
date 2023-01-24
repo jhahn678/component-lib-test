@@ -1,5 +1,5 @@
 {
-  "name": "@jhahn678/mobile",
+  "name": "@jhahn678/web",
   "license": "LICENSE.md",
   "version": "1.0.25",
   "author": "Julian Hahn",
@@ -19,6 +19,6 @@
   },
   "peerDependencies": {
     "react": ">=17.0.2",
-    "react-native": ">=0.68.0"
+    "react-native-web": ">=0.17.1"
   }
 }
