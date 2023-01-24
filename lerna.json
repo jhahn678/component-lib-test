@@ -2,7 +2,7 @@
   "packages": [
     "build/*"
   ],
-  "version": "1.0.28",
+  "version": "1.0.26",
   "command": {
     "publish": {
       "verifyAccess": false
