@@ -1,9 +1,8 @@
 import React, { useCallback } from 'react';
-import { View, Text, StyleSheet } from 'react-native'
-import Button from "./src/components/Button"
-import { colors, fonts } from './src/constants/globalStyles';
+import { fonts } from './src/constants/globalStyles';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
+import Playground from './Playground';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -25,30 +24,9 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
-  
+
   return (
-    <View style={styles.container} onLayout={onLayoutRootView}>
-      <Text style={styles.text}>Component Playground</Text>
-      <Button style={styles.button}>Hello World</Button>
-    </View>
+    <Playground onLayout={onLayoutRootView}/>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    top: 60,
-    position: 'absolute',
-    fontSize: 24,
-    color: colors.brandPrimary,
-    fontFamily: fonts.VoloSans.bold
-  },
-  button: {
-    width: 150,
-  }
-});

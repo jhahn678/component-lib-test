@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import fs from 'fs'
 import path from 'path'
 import chalk from 'chalk';
@@ -47,9 +48,9 @@ export async function buildPackage(packageName: PackageName, options?: BuildOpti
     let packagePath: string;
 
     if(packageName === 'web') {
-        packagePath = path.join(__dirname, '../../build/web');
+        packagePath = path.join(process.cwd(), 'build', 'web');
     }else if(packageName === 'mobile') {
-        packagePath = path.join(__dirname, '../../build/mobile');
+        packagePath = path.join(process.cwd(), 'build', 'mobile');
     }else {
         logger.error(`Package ${chalk.cyan(packageName)} does not exist`);
         process.exit(1);
@@ -65,7 +66,12 @@ export async function buildPackage(packageName: PackageName, options?: BuildOpti
 
         // Compile typescript to package directory
         await compileTypescript(packageName);
-    
+
+        // Configure and add package.json
+        // This needs to be created BEFORE rollup executes as babel
+        // is using this to determine the root of the package
+        fs.writeFileSync(`build/${packageName}/package.json`, configurePackageJson(packageName))
+
         // Create rollup configs for each format and create bundle
         for (const format of formats) {
             const config = await createPackageConfig({
@@ -78,7 +84,7 @@ export async function buildPackage(packageName: PackageName, options?: BuildOpti
             logger.info(`Building to ${chalk.cyan(format)} format...`);
             await compile(config);
         }
-    
+
         logger.info(
             `Package ${chalk.cyan(packageName)} was built in ${chalk.green(
                 `${((Date.now() - startTime) / 1000).toFixed(2)}s`
@@ -88,11 +94,9 @@ export async function buildPackage(packageName: PackageName, options?: BuildOpti
         // Postbuild: Removing src folder from directory
         fs.rmSync(`build/${packageName}/src`, { recursive: true, force: true });
 
-        // Configure and add package.json
-        fs.writeFileSync(`build/${packageName}/package.json`, configurePackageJson(packageName))
-
       } catch (err) {
         logger.error(`Failed to compile package: ${chalk.cyan(packageName)}`);
+        // @ts-ignore
         process.stdout.write(`${err.toString('minimal')}\n`);
         process.exit(1);
       }

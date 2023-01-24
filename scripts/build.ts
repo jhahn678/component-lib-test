@@ -4,11 +4,11 @@ import { buildPackage} from './utils/build-package';
 
 /**
  * @description This is executed from the command line or a package.json script
- * @example ts-node scripts/build 
+ * @example ts-node scripts/build
  * : Builds web and mobile to EsModule and CommonJs
- * @example ts-node scripts/build --package mobile 
+ * @example ts-node scripts/build --package mobile
  * : Builds mobile to EsModule and CommonJs
- * @example ts-node scripts/build --package web --analyze --formats cjs 
+ * @example ts-node scripts/build --package web --analyze --formats cjs
  * : Builds web to CommonJs and generates package analytics at build/web/lib/stats{.html & .json}
  */
 const { argv }: { argv: any } = yargs(hideBin(process.argv))

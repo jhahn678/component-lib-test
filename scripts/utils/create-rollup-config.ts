@@ -5,15 +5,16 @@ import nodeExternals from 'rollup-plugin-node-externals';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { babel, RollupBabelInputPluginOptions } from '@rollup/plugin-babel'
 import visualizer from 'rollup-plugin-visualizer';
+import copy from 'rollup-plugin-copy'
 import esbuild from 'rollup-plugin-esbuild';
-import { PackageName } from './build-package';
+import { PluginItem } from '@babel/core';
 
 export interface RollupConfig extends RollupOptions{
     output: OutputOptions | OutputOptions[]
 }
 
 interface PkgConfigInput {
-    name: PackageName
+    name: string,
     basePath: string
     format: ModuleFormat
     entry?: string
@@ -21,12 +22,24 @@ interface PkgConfigInput {
     analyze?: boolean
 }
 
+
 export default async function createPackageConfig(config: PkgConfigInput): Promise<RollupConfig> {
 
-  // Transforms imports for babel helpers to reference @babel/runtime
-  let babelPlugins: string[] = ["@babel/plugin-transform-runtime"];
+  const babelPlugins: PluginItem[] = [
+    "@babel/plugin-transform-runtime",
+    // Resolve imports from "assets/*" to {build}/assets
+    // CWD is set to packagejson to let babel know we're
+    // referencing the root of this build directory
+    ['module-resolver', {
+      cwd: "packagejson",
+      alias: {
+        "assets": "./assets"
+      }
+    }]
+  ];
 
   const babelOptions: RollupBabelInputPluginOptions = {
+    configFile: false,
     babelHelpers: "runtime",
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
     presets: [
@@ -39,12 +52,22 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
 
   babelOptions.plugins = babelPlugins;
 
+  // Executed from plugins[n] -> plugins[0]
+  // This is important to consider before making any changes.
+  // Copy places the assets directory into basepath, which is
+  // then used by babel to adjust imports
   const plugins = [
     commonjs({ include: /node_modules/ }),
     babel(babelOptions),
     nodeResolve({ extensions: ['.ts', '.tsx', '.js', '.jsx'] }),
     nodeExternals(),
     esbuild({ minify: config.format === 'umd' }),
+    copy({
+      targets: [{
+        src: path.resolve('src', 'assets'),
+        dest: config.basePath
+      }]
+    }),
   ] as InputPluginOption[];
 
   const output: OutputOptions = {
@@ -56,6 +79,7 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
 
   if (config.format === 'es') {
     output.dir = path.resolve(config.basePath, 'esm');
+    output.assetFileNames
     output.preserveModules = true;
   }
 

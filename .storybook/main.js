@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   stories: [
     "../src/**/*.stories.mdx",
@@ -11,5 +13,8 @@ module.exports = {
     '@storybook/addon-react-native-web'
   ],
   framework: "@storybook/react",
-  staticDirs: ["../assets"]
+  staticDirs: [
+    { from: "../src/assets", to: "assets" },
+    { from: "../assets/fonts", to: "fonts" }
+  ],
 }

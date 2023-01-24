@@ -1,0 +1,8 @@
+storybook-static/
+node_modules/
+build/
+.expo/
+.github/
+.storybook/
+.vscode/
+*.config.js

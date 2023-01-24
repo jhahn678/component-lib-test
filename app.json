@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "storybook-test",
-    "slug": "storybook-test",
+    "name": "component-library",
+    "slug": "component-library",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/Volo-logo-color.png",
+    "icon": "./src/assets/Volo-logo-color.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/Volo-logo-color.png",
+      "image": "./src/assets/Volo-logo-color.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -22,12 +22,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/Volo-logo-color.png",
+        "foregroundImage": "./src/assets/Volo-logo-color.png",
         "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
-      "favicon": "./assets/Volo-logo-color.png"
+      "favicon": "./src/assets/Volo-logo-color.png"
     }
   }
 }

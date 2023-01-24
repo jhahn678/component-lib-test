@@ -1,5 +1,5 @@
 // Shared package.json properties
-// 
+//
 // peerDependencies will be combined with what's in the
 // build specific config
 //
@@ -9,14 +9,13 @@
 
 /** Shared package.json properties */
 export default {
-    "version": "1.0.12",
     "license": "MIT",
-    "author": "Some Author",
+    "author": "Julian Hahn",
     "main": "cjs/index.js",
     "module": "esm/index.js",
     "types": "lib/index.d.ts",
     "publishConfig": {
-        "access": "public"
+        "registry": "https://npm.pkg.github.com"
     },
     "sideEffects": false,
     "peerDependencies": {

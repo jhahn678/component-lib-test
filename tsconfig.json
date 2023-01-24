@@ -18,15 +18,18 @@
     "noImplicitAny": false,
     "paths": {
       "react": ["./node_modules/@types/react"],
-      "react-native": ["./node_modules/@types/react-native"]
+      "react-native": ["./node_modules/@types/react-native"],
+      "assets": ["./src/assets"]
     }
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
   ],
   "exclude": [
     "src/**/*.stories.tsx",
-    "src/**/*.stories.ts"
+    "src/**/*.stories.ts",
+    "src/**/*.test.tsx",
+    "src/**/*.spec.tsx",
   ],
   "extends": "expo/tsconfig.base"
 }
