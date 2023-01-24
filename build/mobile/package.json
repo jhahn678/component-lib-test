@@ -1,7 +1,7 @@
 {
   "name": "@jhahn678/mobile",
-  "license": "MIT",
-  "version": "1.0.20",
+  "license": "LICENSE.md",
+  "version": "1.0.18",
   "author": "Julian Hahn",
   "main": "cjs/index.js",
   "module": "esm/index.js",
@@ -20,6 +20,5 @@
   "peerDependencies": {
     "react": ">=17.0.2",
     "react-native": ">=0.68.0"
-  },
-  "gitHead": "907bc5d240301adefec5a20a8e0c86f5f14af976"
+  }
 }
