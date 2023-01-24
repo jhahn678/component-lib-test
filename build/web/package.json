@@ -1,7 +1,7 @@
 {
   "name": "@jhahn678/web",
   "license": "LICENSE.md",
-  "version": "1.0.20",
+  "version": "1.0.18",
   "author": "Julian Hahn",
   "main": "cjs/index.js",
   "module": "esm/index.js",
