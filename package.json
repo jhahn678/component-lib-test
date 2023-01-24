@@ -1,6 +1,6 @@
 {
   "name": "@jhahn678/component-lib-test",
-  "version": "1.0.7",
+  "version": "1.0.28",
   "license": "MIT",
   "main": "node_modules/expo/AppEntry.js",
   "repository": "jhahn678/component-lib-test",
