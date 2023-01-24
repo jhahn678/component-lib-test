@@ -8,7 +8,7 @@ export default {
   argTypes: {
     colorScheme: {
       options: ['brandPrimary', 'brandSecondary', 'brandTertiary'],
-      control: { type: 'select' },
+      control: { type: 'select' }
     },
     isDisabled: {
       options: [true, false],
@@ -29,12 +29,9 @@ export default {
   },
 } as ComponentMeta<typeof Button>;
 
-export const Basic: ComponentStory<typeof Button> = args => <Button {...args}/>;
 
-Basic.args = {
-  children: 'Hello World',
-  variant: 'solid',
-  colorScheme: 'brandPrimary',
-}
+Button['displayName'] = "Button"
+export const Basic: ComponentStory<typeof Button> = (args) => <Button {...args}>VoloSports</Button>
+Basic.args = { colorScheme: 'brandPrimary' } 
 
 

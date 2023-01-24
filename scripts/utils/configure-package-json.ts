@@ -1,13 +1,19 @@
-import fs from 'fs';
+import * as fs from 'fs';
+import * as path from 'path';
 import { PackageName } from "./build-package"
 import webConfig from "../../config/web-config";
 import sharedConfig from "../../config/shared-config";
 import mobileConfig from "../../config/mobile-config";
+const cwd = process.cwd();
 
 interface PackageConfig {
-    name: string
+    name?: string
+    author?: string
+    license?: string
+    version?: string
+    repository?: string
     dependencies?: { [k: string]: string }
-    peerDependencies: { [k: string]: string }
+    peerDependencies?: { [k: string]: string }
 }
 
 /**
@@ -29,6 +35,19 @@ const exclude = [
     'react-native-web',
 ];
 
+
+/**
+ * Gets package.json from specified path and parse to object
+ * @param fromPath defaults to process.cwd()
+ * @returns parsed package.json as object
+ */
+export const getPackageJson = (fromPath: string = cwd): PackageConfig => {
+    const packagePath = path.join(fromPath, "package.json")
+    const file = fs.readFileSync(packagePath, { encoding: 'utf-8' });
+    return JSON.parse(file);
+}
+
+
 /**
  * @description
  * Retrieve and parse the package.json from the root of the project.
@@ -40,10 +59,8 @@ const exclude = [
  * null if the number of deps is zero.
  */
 const getDependenciesList = (): { [k: string]: string } | null => {
-    // Retrieve the root package.json
-    const packageJson = fs.readFileSync("package.json", { encoding: 'utf-8' });
-    // Parse object and get dependencies lists
-    const { dependencies } = JSON.parse(packageJson);
+    // Retrieve the parsed root package.json
+    const { dependencies = {}  } = getPackageJson();
      // Filter out unwanted deps
      const filteredEntries = Object.entries<string>(dependencies)
         .filter(([x]) =>
@@ -70,14 +87,14 @@ const configurePackageJson = (packageName: PackageName): string => {
         dependencies: sharedDependencies,
         peerDependencies: sharedPeerDependencies,
         ...sharedProperties
-    } = sharedConfig as Omit<PackageConfig, 'name'>;
+    } = sharedConfig as unknown as PackageConfig;
 
     let config: PackageConfig;
 
     if(packageName === 'mobile') {
-        config = mobileConfig as PackageConfig;
+        config = mobileConfig as unknown as PackageConfig;
     }else if(packageName === 'web') {
-        config = webConfig as PackageConfig;
+        config = webConfig as unknown as PackageConfig;
     }else{
         return "";
     }
