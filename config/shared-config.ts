@@ -10,7 +10,7 @@
 /** Shared package.json properties */
 export default {
     "license": "LICENSE.md",
-    "version": "1.0.18",
+    "version": "1.0.25",
     "author": "Julian Hahn",
     "main": "cjs/index.js",
     "module": "esm/index.js",
