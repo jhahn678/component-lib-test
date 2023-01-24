@@ -1,0 +1,9 @@
+{
+  "packages": ["build/*"],
+  "version": "1.0.20",
+  "command": {
+    "publish": {
+      "verifyAccess": false
+    }
+  }
+}
