@@ -16,7 +16,8 @@ export default {
     "module": "esm/index.js",
     "types": "lib/index.d.ts",
     "publishConfig": {
-        "registry": "https://npm.pkg.github.com"
+        "registry": "https://registry.npmjs.org/",
+        "access": "public"
     },
     "sideEffects": false,
     "peerDependencies": {
