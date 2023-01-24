@@ -1,7 +1,7 @@
 {
   "name": "@jhahn678/mobile",
   "license": "MIT",
-  "version": "1.0.18",
+  "version": "1.0.20",
   "author": "Julian Hahn",
   "main": "cjs/index.js",
   "module": "esm/index.js",
