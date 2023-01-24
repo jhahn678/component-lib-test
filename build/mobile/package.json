@@ -1,13 +1,14 @@
 {
   "name": "@jhahn678/mobile",
   "license": "LICENSE.md",
-  "version": "1.0.26",
+  "version": "1.0.25",
   "author": "Julian Hahn",
   "main": "cjs/index.js",
   "module": "esm/index.js",
   "types": "lib/index.d.ts",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   },
   "sideEffects": false,
   "dependencies": {
@@ -20,6 +21,5 @@
   "peerDependencies": {
     "react": ">=17.0.2",
     "react-native": ">=0.68.0"
-  },
-  "gitHead": "fd386c5305c01dc67bfe2491a580f8dfabe89eb6"
+  }
 }
