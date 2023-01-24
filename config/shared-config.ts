@@ -9,7 +9,7 @@
 
 /** Shared package.json properties */
 export default {
-    "license": "MIT",
+    "license": "LICENSE.md",
     "version": "1.0.18",
     "author": "Julian Hahn",
     "main": "cjs/index.js",
