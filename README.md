@@ -74,12 +74,12 @@ To test the builds locally, you can open up another project and use a relative i
 ### In an existing web project:
 
 ```
-yarn add @jhahn678/web react-native-web
+yarn add @jhahn678/components react-native-web
 ```
 ### In an existing react-native project:
 
 ```
-yarn add @jhahn678/mobile
+yarn add @jhahn678/components
 ```
 <br><br>
 
@@ -101,19 +101,16 @@ yarn web
 ```
 yarn build
 ```
-### Build mobile package
-```
-yarn build:mobile
-```
-### Build web package
-```
-yarn build:web
-```
 ### Build and create package analytics 
-<i>@build/{package}/lib/stats.html</i>
+<i>@build/lib/stats.html</i>
 
 ```
 yarn build:analyze
+```
+### Build and manually release package
+<i>Requires NPM_TOKEN and GH_TOKEN with repo access in .env</i>
+```
+yarn build:release
 ```
 
 <br><hr>
