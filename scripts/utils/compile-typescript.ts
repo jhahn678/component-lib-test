@@ -1,13 +1,12 @@
 import execa from 'execa'
-import { PackageName } from './build-package';
 
-const compileTypescript = async (packageName: PackageName) => {
+const compileTypescript = async () => {
     await execa('yarn', [
         'tsc', 
         '--outDir', 
-        `build/${packageName}/src`, 
+        `build/src`, 
         '--declarationDir', 
-        `build/${packageName}/lib`
+        `build/lib`
     ])
 }
 

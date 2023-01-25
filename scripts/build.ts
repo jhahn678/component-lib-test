@@ -1,6 +1,6 @@
 import yargs from 'yargs/yargs';
 import { hideBin } from 'yargs/helpers';
-import { buildPackage} from './utils/build-package';
+import { BuildOptions, buildPackage} from './utils/build-package';
 
 /**
  * @description This is executed from the command line or a package.json script
@@ -11,12 +11,7 @@ import { buildPackage} from './utils/build-package';
  * @example ts-node scripts/build --package web --analyze --formats cjs
  * : Builds web to CommonJs and generates package analytics at build/web/lib/stats{.html & .json}
  */
-const { argv }: { argv: any } = yargs(hideBin(process.argv))
-  .option('package', {
-    type: 'string',
-    choices: ['web', 'mobile'],
-    description: 'Specify package which should be bundled.',
-  })
+const { argv }: { argv: unknown } = yargs(hideBin(process.argv))
   .option('analyze', {
     type: 'boolean',
     default: false,
@@ -41,10 +36,5 @@ const { argv }: { argv: any } = yargs(hideBin(process.argv))
   ]);
 
 (async () => {
-  if(argv.package){
-    await buildPackage(argv.package, argv)
-  }else{
-    await buildPackage('web', argv)
-    await buildPackage('mobile', argv)
-  }
+  await buildPackage(argv as BuildOptions);
 })();

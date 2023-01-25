@@ -14,10 +14,4 @@ npm-debug.*
 # macOS
 .DS_Store
 
-build/*
-!build/web
-!build/mobile
-build/web/*
-build/mobile/*
-!build/web/package.json
-!build/mobile/package.json
+build/
