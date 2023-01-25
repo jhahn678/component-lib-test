@@ -1,0 +1,67 @@
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  packages: write
+
+name: Build and Publish NPM package
+on:
+  push:
+    branches:
+      - "main"
+      - "testing"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.13.2
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@jhahn678/components"
+          always-auth: true
+      - name: Create and Publish Release NPM
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          yarn install
+          yarn build:release
+#   deploy:
+#     environment:
+#       name: github-pages
+#       url: $0
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
+#         with:
+#           token: ${{ secrets.GH_TOKEN }}
+
+#       - name: Prepare repository
+#         run: git fetch --unshallow --tags
+
+#       - name: Use Node.js 16.x
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: 16.13.2
+#           registry-url: "https://npm.pkg.github.com"
+#           scope: "@jhahn678/components"
+#           always-auth: true
+#       - name: Cache node modules
+#         uses: actions/cache@v3
+#         with:
+#           path: node_modules
+#           key: yarn-deps-${{ hashFiles('yarn.lock') }}
+#           restore-keys: |
+#             yarn-deps-${{ hashFiles('yarn.lock') }}
+#       - name: Create and Publish Release NPM
+#         env:
+#           NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
+#           GH_TOKEN: ${{ secrets.GH_TOKEN }
+#           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+#         run: |
+#           yarn install --frozen-lockfile
+#           yarn build:release
+
