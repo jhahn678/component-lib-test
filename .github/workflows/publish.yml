@@ -28,6 +28,7 @@ jobs:
         run: |
           yarn install
           yarn build:release
+          
 #   deploy:
 #     environment:
 #       name: github-pages
