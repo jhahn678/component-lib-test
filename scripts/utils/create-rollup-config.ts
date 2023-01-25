@@ -19,13 +19,12 @@ interface PkgConfigInput {
     sourcemap?: boolean
     analyze?: boolean
 }
-console.log(path.resolve("build", "esm"))
 
 export default async function createPackageConfig(config: PkgConfigInput): Promise<RollupConfig> {
 
   const babelPlugins: PluginItem[] = [
     "@babel/plugin-transform-runtime",
-    // Resolve imports from "assets/*" to {build}/assets
+    // Resolve imports from "assets/*" to build/assets
     // CWD is set to packagejson to let babel know we're
     // referencing the root of this build directory
     ['module-resolver', {
@@ -106,11 +105,11 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
   }
 
   // Rollup executes after TS compilation, which outputs to build/{package}/src
-  const defaultInput = path.resolve('build', 'src/index.js');
+  const input = path.resolve('build', 'src/index.js');
 
   return {
+    input,
     output,
     plugins,
-    input: config?.entry || defaultInput,
   };
 }

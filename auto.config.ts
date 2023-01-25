@@ -8,6 +8,7 @@ const npmOptions: INpmConfig = {
 /** Auto configuration */
 export default function rc(): AutoRc {
   return {
+    baseBranch: "testing",
     plugins: [
       ["npm", npmOptions],
     ],

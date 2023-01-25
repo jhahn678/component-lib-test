@@ -19,10 +19,10 @@
     "build-storybook": "build-storybook",
     "build": "ts-node scripts/build",
     "build:analyze": "ts-node scripts/build --analyze",
+    "build:release": "npm run build && auto shipit",
     "test": "jest --forceExit",
     "test:coverage": "jest --coverage --forceExit",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx",
-    "release": "npm run build && auto shipit"
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
     "@babel/runtime": "^7.20.7",
