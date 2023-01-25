@@ -6,7 +6,7 @@
   "repository": "jhahn678/component-lib-test",
   "author": "Julian Hahn <jhahn678@yahoo.com>",
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/",
+    "registry": "https://npm.pkg.github.com",
     "access": "public"
   },
   "scripts": {
