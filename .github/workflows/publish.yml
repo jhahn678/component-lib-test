@@ -68,7 +68,3 @@ jobs:
 #         run: |
 #           yarn install --frozen-lockfile
 #           yarn build:release
-<<<<<<< HEAD
-
-=======
->>>>>>> d3ee753 (Added workflow)
