@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: 16.13.2
           registry-url: "https://npm.pkg.github.com"
-          scope: "@jhahn678/components"
+          scope: "@jhahn678"
           always-auth: true
       - name: Create and Publish Release NPM
         env:
