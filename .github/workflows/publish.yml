@@ -18,7 +18,7 @@ jobs:
         with:
           token: ${{ secrets.GH_TOKEN }}
       - name: Prepare repository
-          run: git fetch --unshallow --tags
+        run: git fetch --unshallow --tags
       - uses: actions/setup-node@v3
         with:
           node-version: 16.13.2
