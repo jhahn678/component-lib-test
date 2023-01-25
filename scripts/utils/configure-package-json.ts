@@ -9,6 +9,10 @@ interface PackageConfig {
     version: string
     repository: string
     main: string,
+    publishConfig: {
+        registry: string
+        access: string
+    },
     dependencies: { [k: string]: string }
     peerDependencies: { [k: string]: string },
     devDependencies: { [k: string]: string },
@@ -82,13 +86,20 @@ const configurePackageJson = (): string => {
     
     const dependencies = getDependenciesList();
 
-    const { name, license, version, author } = getPackageJson();
+    const { 
+        name, 
+        license, 
+        version, 
+        author,
+        publishConfig
+    } = getPackageJson();
 
     const packageJson = {
         name,
         license,
         version,
         author,
+        publishConfig,
         main: "cjs/index.js",
         module: "esm/index.js",
         types: "lib/index.d.ts",
