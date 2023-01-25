@@ -1,4 +1,4 @@
-import { AutoRc} from "@auto-it/core"
+import { AutoRc } from "@auto-it/core"
 import { INpmConfig } from "@auto-it/npm";
 
 const npmOptions: INpmConfig = {
