@@ -31,7 +31,8 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           yarn install
-          yarn build:release
+          yarn build
+          npx auto shipit
 
 #   deploy:
 #     environment:
