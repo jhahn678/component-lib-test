@@ -14,14 +14,12 @@ export interface RollupConfig extends RollupOptions{
 }
 
 interface PkgConfigInput {
-    name: string,
-    basePath: string
     format: ModuleFormat
     entry?: string
     sourcemap?: boolean
     analyze?: boolean
 }
-
+console.log(path.resolve("build", "esm"))
 
 export default async function createPackageConfig(config: PkgConfigInput): Promise<RollupConfig> {
 
@@ -47,8 +45,6 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
     ]
   };
 
-  // Transforms react-native imports in the web build
-  if(config.name === 'web') babelPlugins.push('react-native-web')
 
   babelOptions.plugins = babelPlugins;
 
@@ -65,26 +61,26 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
     copy({
       targets: [{
         src: path.resolve('src', 'assets'),
-        dest: config.basePath
+        dest: 'build'
       }]
     }),
   ] as InputPluginOption[];
 
   const output: OutputOptions = {
-    name: config.name,
+    name: "build",
     format: config.format,
     externalLiveBindings: false,
     sourcemap: config.sourcemap,
   };
 
   if (config.format === 'es') {
-    output.dir = path.resolve(config.basePath, 'esm');
+    output.dir = path.resolve("build", "esm")
     output.assetFileNames
     output.preserveModules = true;
   }
 
   if (config.format === 'cjs') {
-    output.dir = path.resolve(config.basePath, 'cjs');
+    output.dir = path.resolve("build", "cjs")
     output.preserveModules = true;
     output.exports = 'named';
   }
@@ -92,16 +88,16 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
   if (config.analyze && config.format === 'es') {
     plugins.push(
       visualizer({
-        title: config.name,
-        filename: path.join(config.basePath, 'lib/stats.html'),
-        projectRoot: path.join(config.basePath, 'src'),
+        title: "build",
+        filename: 'build/lib/stats.html',
+        projectRoot: "build",
         sourcemap: true,
         gzipSize: true,
       }),
       visualizer({
-        title: config.name,
-        filename: path.join(config.basePath, 'lib/stats.json'),
-        projectRoot: path.join(config.basePath, 'src'),
+        title: "build",
+        filename: 'build/lib/stats.json',
+        projectRoot: "build",
         json: true,
         sourcemap: true,
         gzipSize: true,
@@ -110,7 +106,7 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
   }
 
   // Rollup executes after TS compilation, which outputs to build/{package}/src
-  const defaultInput = path.resolve(config.basePath, 'src/index.js');
+  const defaultInput = path.resolve('build', 'src/index.js');
 
   return {
     output,

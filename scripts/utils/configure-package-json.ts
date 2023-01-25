@@ -1,19 +1,17 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { PackageName } from "./build-package"
-import webConfig from "../../config/web-config";
-import sharedConfig from "../../config/shared-config";
-import mobileConfig from "../../config/mobile-config";
 const cwd = process.cwd();
 
 interface PackageConfig {
-    name?: string
-    author?: string
-    license?: string
-    version?: string
-    repository?: string
-    dependencies?: { [k: string]: string }
-    peerDependencies?: { [k: string]: string }
+    name: string
+    author: string
+    license: string
+    version: string
+    repository: string
+    main: string,
+    dependencies: { [k: string]: string }
+    peerDependencies: { [k: string]: string },
+    devDependencies: { [k: string]: string },
 }
 
 /**
@@ -58,7 +56,7 @@ export const getPackageJson = (fromPath: string = cwd): PackageConfig => {
  *  - OR -
  * null if the number of deps is zero.
  */
-const getDependenciesList = (): { [k: string]: string } | null => {
+export const getDependenciesList = (): { [k: string]: string } | null => {
     // Retrieve the parsed root package.json
     const { dependencies = {}  } = getPackageJson();
      // Filter out unwanted deps
@@ -80,38 +78,26 @@ const getDependenciesList = (): { [k: string]: string } | null => {
  * @param packageName
  * @returns JSON object
  */
-const configurePackageJson = (packageName: PackageName): string => {
-    const rootDependencies = getDependenciesList();
+const configurePackageJson = (): string => {
+    
+    const dependencies = getDependenciesList();
 
-    const {
-        dependencies: sharedDependencies,
-        peerDependencies: sharedPeerDependencies,
-        ...sharedProperties
-    } = sharedConfig as unknown as PackageConfig;
-
-    let config: PackageConfig;
-
-    if(packageName === 'mobile') {
-        config = mobileConfig as unknown as PackageConfig;
-    }else if(packageName === 'web') {
-        config = webConfig as unknown as PackageConfig;
-    }else{
-        return "";
-    }
-
-    const { name, dependencies, peerDependencies } = config;
+    const { name, license, version, author } = getPackageJson();
 
     const packageJson = {
         name,
-        ...sharedProperties,
-        dependencies: {
-            ...rootDependencies,
-            ...sharedDependencies,
-            ...dependencies,
-        },
+        license,
+        version,
+        author,
+        main: "cjs/index.js",
+        module: "esm/index.js",
+        types: "lib/index.d.ts",
+        sideEffects: false,
+        dependencies,
         peerDependencies: {
-            ...sharedPeerDependencies,
-            ...peerDependencies,
+            "react": ">=17.0.2",
+            "react-native": ">=0.68.0",
+            "react-native-web": ">=0.17.1",
         }
     }
 

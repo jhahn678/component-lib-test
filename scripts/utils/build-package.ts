@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import fs from 'fs'
-import path from 'path'
 import chalk from 'chalk';
 import { Logger } from './Logger';
 import { OutputOptions, rollup, ModuleFormat, RollupOutput } from 'rollup';
@@ -29,56 +28,40 @@ export interface BuildOptions {
     formats: ModuleFormat[];
 }
 
-export type PackageName = 'web' | 'mobile';
-
 /**
- * called in scripts/build
+ * Called in scripts/build
  * @prebuild removes cjs/esm/lib from previous build
  * @build compiles/writes build from rollup configuration
  * @postbuild removes src folder from directory
- * @param packageName web or mobile
  * @param options build options from command line
  */
-export async function buildPackage(packageName: PackageName, options?: BuildOptions) {
+export async function buildPackage(options?: BuildOptions) {
 
     const logger = new Logger('Build');
 
     const { formats = [], ...otherOptions } = options || {};
 
-    let packagePath: string;
-
-    if(packageName === 'web') {
-        packagePath = path.join(process.cwd(), 'build', 'web');
-    }else if(packageName === 'mobile') {
-        packagePath = path.join(process.cwd(), 'build', 'mobile');
-    }else {
-        logger.error(`Package ${chalk.cyan(packageName)} does not exist`);
-        process.exit(1);
-    }
-
-    logger.info(`Building package ${chalk.cyan(packageName)}`);
+    logger.info(`${chalk.cyan('Building package')}`);
 
     // Prebuild: Remove previous build folder
-    fs.rmSync(`build/${packageName}`, { recursive: true, force: true });
+    fs.rmSync('build', { recursive: true, force: true });
 
     try {
         const startTime = Date.now();
 
         // Compile typescript to package directory
-        await compileTypescript(packageName);
+        await compileTypescript();
 
         // Configure and add package.json
         // This needs to be created BEFORE rollup executes as babel
         // is using this to determine the root of the package
-        fs.writeFileSync(`build/${packageName}/package.json`, configurePackageJson(packageName))
+        fs.writeFileSync(`build/package.json`, configurePackageJson())
 
         // Create rollup configs for each format and create bundle
         for (const format of formats) {
             const config = await createPackageConfig({
-                ...otherOptions,
                 format,
-                name: packageName,
-                basePath: packagePath,
+                ...otherOptions,
             });
 
             logger.info(`Building to ${chalk.cyan(format)} format...`);
@@ -86,17 +69,15 @@ export async function buildPackage(packageName: PackageName, options?: BuildOpti
         }
 
         logger.info(
-            `Package ${chalk.cyan(packageName)} was built in ${chalk.green(
+            `Package was built in ${chalk.green(
                 `${((Date.now() - startTime) / 1000).toFixed(2)}s`
             )}`
         );
 
         // Postbuild: Removing src folder from directory
-        fs.rmSync(`build/${packageName}/src`, { recursive: true, force: true });
+        fs.rmSync(`build/src`, { recursive: true, force: true });
 
       } catch (err) {
-        logger.error(`Failed to compile package: ${chalk.cyan(packageName)}`);
-        // @ts-ignore
         process.stdout.write(`${err.toString('minimal')}\n`);
         process.exit(1);
       }
