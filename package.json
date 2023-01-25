@@ -3,7 +3,7 @@
   "version": "1.0.27",
   "license": "LICENSE.md",
   "main": "node_modules/expo/AppEntry.js",
-  "repository": "jhahn678/component-lib-test",
+  "repository": "jhahn678/component-library",
   "author": "Julian Hahn <jhahn678@yahoo.com>",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
