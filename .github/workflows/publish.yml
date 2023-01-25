@@ -26,7 +26,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          yarn add auto lerna
+          yarn install
           yarn build:release
 #   deploy:
 #     environment:
