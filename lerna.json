@@ -1,7 +1,0 @@
-{
-    "command": {
-        "publish": {
-            "verifyAccess": false
-        }
-    }
-}
