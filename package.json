@@ -3,7 +3,7 @@
   "version": "0.0.0-development",
   "license": "LICENSE.md",
   "main": "node_modules/expo/AppEntry.js",
-  "repository": "github:jhahn678/component-library",
+  "repository": "https://github.com/jhahn678/component-library.git",
   "author": "Julian Hahn <jhahn678@yahoo.com>",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
