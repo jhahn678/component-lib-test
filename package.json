@@ -1,6 +1,6 @@
 {
   "name": "@jhahn678/components",
-  "version": "1.0.29",
+  "version": "1.0.30",
   "license": "LICENSE.md",
   "main": "node_modules/expo/AppEntry.js",
   "repository": "jhahn678/component-library",
