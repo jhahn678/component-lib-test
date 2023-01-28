@@ -1,9 +1,6 @@
 branches:
   - "semantic-release"
-ci: true
 debug: true
-dryRun: false
-tagFormat: '${version}'
 analyzeCommits:
   - path: '@semantic-release/commit-analyzer'
     # Determine the type of release by analyzing commits with conventional-changelog
