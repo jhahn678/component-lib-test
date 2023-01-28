@@ -5,14 +5,13 @@ permissions:
   packages: write
 
 name: Build and Publish NPM package
-on:
-  push:
-    branches:
-      - "main"
+
+on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')"
     steps:
       - uses: actions/checkout@v3
         with:
