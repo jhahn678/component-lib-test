@@ -23,5 +23,33 @@ module.exports = {
                 ]
             }
         ],
+        [
+            "@semantic-release/release-notes-generator",
+            {
+                preset: 'conventionalcommits',
+                parserOpts: {
+                    mergePattern: "^Merge branch '(.*)' into (.*)$",
+                    noteKeywords: ["BREAKING CHANGE", "BREAKING CHANGES", "BREAKING"],
+                },
+                writerOpts: {
+                    commitsSort: ["subject", "scope"]
+                },
+                presetConfig: {
+                    types: [
+                        {type: "fix", section: "🛠 Fixes"},
+                        {type: "feat", section: "🚀 Features"},
+                        {type: "perf", section: "🏎️ Performance"},
+                        {type: "build", hidden: true},
+                        {type: "ci", hidden: true},
+                        {type: "docs", hidden: true},
+                        {type: "test", hidden: true},
+                        {type: "chore", hidden: true},
+                        {type: "style", hidden: true},
+                        {type: "revert", hidden: true},
+                        {type: "refactor", hidden: true},
+                    ]
+                }
+            }
+        ]
     ]
 };
