@@ -10,7 +10,7 @@ export default function rc(): AutoRc {
   return {
     plugins: [
       ["npm", npmOptions],
-      './scripts/utils/auto-build-plugin.js',
+      './scripts/utils/auto-build-plugin',
     ],
   };
 }
