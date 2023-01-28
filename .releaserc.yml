@@ -81,4 +81,4 @@ generateNotes:
 
 publishPackage:
   - path: '@semantic-release/npm'
-    pkgRoot: 'build'
+    pkgRoot: './build'
