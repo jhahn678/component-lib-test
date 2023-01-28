@@ -78,3 +78,7 @@ generateNotes:
         - type: 'test'
           section: '🧪 Tests'
           hidden: false
+
+publishPackage:
+  - path: '@semantic-release/npm'
+    pkgRoot: 'build'
