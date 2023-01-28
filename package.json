@@ -19,11 +19,11 @@
     "build-storybook": "build-storybook",
     "build": "ts-node scripts/build",
     "build:analyze": "ts-node scripts/build --analyze",
-    "build:release": "auto shipit",
     "test": "jest --forceExit",
     "test:coverage": "jest --coverage --forceExit",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx",
     "semantic-release": "semantic-release",
+    "postversion": "npm run build",
     "cz": "git-cz"
   },
   "dependencies": {
