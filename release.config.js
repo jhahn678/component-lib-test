@@ -51,10 +51,10 @@ module.exports = {
                 }
             }
         ],
-        // [
-        //     "@semantic-release/npm", 
-        //     { pkgRoot: "./build" }
-        // ],
+        [
+            "@semantic-release/npm", 
+            { pkgRoot: "build/" }
+        ],
         "@semantic-release/github",
     ]
 };
