@@ -7,6 +7,7 @@ module.exports = {
             {
                 preset: 'conventionalcommits',
                 releaseRules: [
+                    {revert: true, release: "patch"},
                     {breaking: true, release: 'major'},
                     {type: "feat", release: "minor"},
                     {type: "fix", release: "patch"},
@@ -14,7 +15,6 @@ module.exports = {
                     {type: 'revert', release: 'patch'},
                     {type: "perf", release: "patch"},
                     {type: 'build', release: 'patch'},
-                    {type: "revert", release: "patch"},
                     {type: 'ci', release: false},
                     {type: "test", release: false},
                     {type: "chore", release: false},
