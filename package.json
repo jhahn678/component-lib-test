@@ -1,6 +1,6 @@
 {
   "name": "@jhahn678/components",
-  "version": "1.0.31",
+  "version": "0.0.0-development",
   "license": "LICENSE.md",
   "main": "node_modules/expo/AppEntry.js",
   "repository": "jhahn678/component-library",
@@ -22,7 +22,8 @@
     "build:release": "auto shipit",
     "test": "jest --forceExit",
     "test:coverage": "jest --coverage --forceExit",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx",
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "@babel/runtime": "^7.20.7",
@@ -71,6 +72,7 @@
     "babel-plugin-react-native-web": "^0.18.10",
     "babel-preset-expo": "^9.2.2",
     "chalk": "4.1.2",
+    "cz-conventional-changelog": "^3.3.0",
     "dotenv": "^16.0.3",
     "esbuild": "^0.17.0",
     "eslint": "^8.32.0",
@@ -96,5 +98,10 @@
     "ts-node": "^10.9.1",
     "typescript": "~4.3.5",
     "yargs": "^17.6.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
