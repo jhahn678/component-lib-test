@@ -50,6 +50,20 @@ module.exports = {
                     ]
                 }
             }
+        ],
+        [
+            "@semantic-release/npm", 
+            {
+                pkgRoot: "./build",
+            }
+        ],
+        "@semantic-release/github",
+        [
+            "@semantic-release/git", 
+            {
+                assets: ["docs", "package.json"],
+                message: "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+            }
         ]
     ]
 };
