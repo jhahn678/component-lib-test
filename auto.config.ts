@@ -9,8 +9,8 @@ const npmOptions: INpmConfig = {
 export default function rc(): AutoRc {
   return {
     plugins: [
+      './scripts/utils/auto-build-plugin.js',
       ["npm", npmOptions],
-      './scripts/utils/auto-build-plugin',
     ],
   };
 }
