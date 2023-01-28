@@ -2,7 +2,7 @@ import { AutoRc } from "@auto-it/core"
 import { INpmConfig } from "@auto-it/npm";
 
 const npmOptions: INpmConfig = {
-  publishFolder: "./build"
+  publishFolder: "./build",
 };
 
 /** Auto configuration */
@@ -10,7 +10,7 @@ export default function rc(): AutoRc {
   return {
     plugins: [
       ["npm", npmOptions],
-      './scripts/utils/auto-build-plugin',
+      './scripts/utils/auto-build-plugin.js',
     ],
   };
 }
