@@ -1,10 +1,8 @@
-import { ViewStyle } from 'react-native';
 import {
   Blues,
   Colors,
   FontFamily,
   FontSizes,
-  FontWeights,
   Greys,
 } from './types'
 
@@ -25,11 +23,6 @@ export const fontSizes: FontSizes = {
   large: 20,
   extraLarge: 34,
   xxlarge: 44
-}
-
-export const fontWeights: FontWeights = {
-  normal: 400,
-  bold: 700,
 }
 
 export const fonts: FontFamily = {
@@ -84,12 +77,4 @@ export const colors: Colors = {
   greys: { ...greys },
   dropInBlue: 'rgba(85, 62, 114, 1)',
   pickupPurple: 'rgba(61, 115, 179, 1)',
-};
-
-export const shadow: ViewStyle = {
-  shadowRadius: 3,
-  shadowOpacity: 0.2,
-  shadowColor: colors.black,
-  shadowOffset: { height: 1, width: 0 },
-  elevation: 4,
 };
