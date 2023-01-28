@@ -1,10 +1,9 @@
 import execa from 'execa';
-import { Auto, IPlugin } from '@auto-it/core'
 
-export default class AutoBuildPlugin implements IPlugin {
+export default class AutoBuildPlugin {
   name = 'build-plugin';
 
-  apply(auto: Auto) {
+  apply(auto) {
     auto.hooks.afterVersion.tapAsync("NPM", async () => {
       await execa('yarn', ['build'])
     })
