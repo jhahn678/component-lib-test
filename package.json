@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.20.7",
+    "@rivallapp/volosports-components": "^1.0.20",
     "expo": "45.0.0",
     "expo-font": "~10.1.0",
     "expo-splash-screen": "~0.15.1",

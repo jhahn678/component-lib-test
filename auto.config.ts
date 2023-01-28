@@ -10,6 +10,7 @@ export default function rc(): AutoRc {
   return {
     baseBranch: "testing",
     plugins: [
+      './scripts/utils/auto-build-plugin',
       ["npm", npmOptions],
     ],
   };
