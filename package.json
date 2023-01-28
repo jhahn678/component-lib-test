@@ -23,7 +23,7 @@
     "test:coverage": "jest --coverage --forceExit",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx",
     "semantic-release": "semantic-release",
-    "prepack": "npm run build",
+    "postversion": "npm run build",
     "cz": "git-cz"
   },
   "dependencies": {

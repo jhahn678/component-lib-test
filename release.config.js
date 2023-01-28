@@ -53,9 +53,7 @@ module.exports = {
         ],
         [
             "@semantic-release/npm", 
-            {
-                pkgRoot: "./build",
-            }
+            { pkgRoot: "./build" }
         ],
         "@semantic-release/github",
     ]
