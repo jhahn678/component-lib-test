@@ -83,11 +83,6 @@ export type FontSizes = {
   xxlarge: 44
 }
 
-export type FontWeights = {
-  normal: 400,
-  bold: 700,
-}
-
 export type FontSizeOptions = { [key in keyof FontSizes]?: boolean | undefined };
 
 export type FontFamily = {
