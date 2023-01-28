@@ -22,7 +22,6 @@
     "test": "jest --forceExit",
     "test:coverage": "jest --coverage --forceExit",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx",
-    "postversion": "npm run build",
     "cz": "git-cz"
   },
   "dependencies": {

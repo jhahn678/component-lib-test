@@ -56,6 +56,10 @@ module.exports = {
             { pkgRoot: "./build" }
         ],
         [
+            '@semantic-release/changelog',
+            { changelogFile: 'CHANGELOG.md' }
+        ],
+        [
             "@semantic-release/git",
             {
                 assets: ["package.json", "CHANGELOG.md"],
