@@ -2204,6 +2204,16 @@
     "@types/yargs" "^17.0.8"
     chalk "^4.0.0"
 
+"@jhahn678/components@2.0.0":
+  version "2.0.0"
+  resolved "https://npm.pkg.github.com/download/@jhahn678/components/2.0.0/150ac97ee70f9b87b473654a31122d6899101b3a#150ac97ee70f9b87b473654a31122d6899101b3a"
+  integrity sha512-O7NakVKr6inUecHq+cKMrzaWfxaPPtPxs6NXjFdInaMjcCChEJR9LHWnNFrvQUn6mYrkMpSXLgXdhl1egdJFdw==
+  dependencies:
+    "@babel/runtime" "^7.20.7"
+    native-base "^3.4.25"
+    react-native-safe-area-context "^3.3.2"
+    react-native-svg "^12.1.0"
+
 "@jridgewell/gen-mapping@^0.1.0":
   version "0.1.1"
   resolved "https://registry.npmjs.org/@jridgewell/gen-mapping/-/gen-mapping-0.1.1.tgz"
