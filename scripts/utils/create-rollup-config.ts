@@ -89,17 +89,17 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
       visualizer({
         title: "build",
         filename: 'lib/stats.html',
+        projectRoot: 'src',
         sourcemap: true,
         gzipSize: true,
-        include: [{ file: 'esm' }, { file: 'csm'}, { file: 'lib'}]
       }),
       visualizer({
         title: "build",
+        projectRoot: 'src',
         filename: 'lib/stats.json',
         json: true,
         sourcemap: true,
         gzipSize: true,
-        include: [{ file: 'esm' }, { file: 'csm'}, { file: 'lib'}]
       })
     );
   }
