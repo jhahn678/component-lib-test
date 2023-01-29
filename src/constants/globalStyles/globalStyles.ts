@@ -77,4 +77,4 @@ export const colors: Colors = {
   greys: { ...greys },
   dropInBlue: 'rgba(85, 62, 114, 1)',
   pickupPurple: 'rgba(61, 115, 179, 1)',
-};
+}; 

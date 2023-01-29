@@ -1,34 +1,27 @@
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-  packages: write
-
-name: Build and Publish NPM package
+name: Release
 on:
   push:
     branches:
-      - "main"
-
+      - main
 jobs:
-  build:
+  release:
+    name: Release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Prepare repository
-        run: git fetch --unshallow --tags
-      - uses: actions/setup-node@v3
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: 16.13.2
-          registry-url: "https://npm.pkg.github.com"
-          scope: "@jhahn678"
-          always-auth: true
-      - name: Create and Publish Release NPM
+          node-version: "lts/*"
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Build package
+        run: yarn build
+      - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          yarn install --frozen-lockfile
-          yarn build:release
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: cd build && npx semantic-release
