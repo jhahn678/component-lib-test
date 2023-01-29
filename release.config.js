@@ -1,5 +1,5 @@
 module.exports = {
-    branches: ['semantic-release'],
+    branches: ['main'],
     debug: true,
 	plugins: [
         [
