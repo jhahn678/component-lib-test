@@ -1,5 +1,5 @@
 module.exports = {
-    branches: ['test'],
+    branches: ['main'],
     debug: true,
 	plugins: [
         [
