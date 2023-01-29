@@ -1,9 +1,11 @@
+const path = require('path');
+
+console.log(path.resolve('../CHANGELOG.md'))
+
 module.exports = {
     branches: ['main'],
     debug: true,
 	plugins: [
-        "@semantic-release/npm",
-        "@semantic-release/github",
         [
             '@semantic-release/changelog',
             { changelogFile: '../CHANGELOG.md' }
@@ -15,6 +17,8 @@ module.exports = {
                 "message": "release(version): Release ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
             }
         ],
+        "@semantic-release/npm",
+        "@semantic-release/github",
         [
             "@semantic-release/commit-analyzer",
             {
