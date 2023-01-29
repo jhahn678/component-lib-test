@@ -44,7 +44,11 @@ export async function buildPackage(options?: BuildOptions) {
     logger.info(`${chalk.cyan('Building package')}`);
 
     // Prebuild: Remove previous build folder
-    // fs.rmSync('build', { recursive: true, force: true });
+    fs.rmSync('cjs', { recursive: true, force: true });
+    fs.rmSync('esm', { recursive: true, force: true });
+    fs.rmSync('lib', { recursive: true, force: true });
+    fs.rmSync('dist', { recursive: true, force: true });
+    fs.rmSync('assets', { recursive: true, force: true });
 
     try {
         const startTime = Date.now();
