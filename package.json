@@ -9,6 +9,13 @@
     "registry": "https://npm.pkg.github.com",
     "access": "public"
   },
+  "files": [
+    "cjs",
+    "esm",
+    "lib",
+    "LICENSE.md",
+    "package.json"
+  ],
   "scripts": {
     "start": "expo start",
     "start -c": "expo start -c",
