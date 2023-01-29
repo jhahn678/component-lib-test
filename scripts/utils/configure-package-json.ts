@@ -104,6 +104,13 @@ const configurePackageJson = (): string => {
         module: "esm/index.js",
         types: "lib/index.d.ts",
         sideEffects: false,
+        files: [
+            "cjs",
+            "esm",
+            "lib",
+            "LICENSE.md",
+            "package.json"
+        ],
         dependencies,
         peerDependencies: {
             "react": ">=17.0.2",
