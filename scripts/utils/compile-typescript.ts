@@ -4,9 +4,9 @@ const compileTypescript = async () => {
     await execa('yarn', [
         'tsc', 
         '--outDir', 
-        `build/src`, 
+        'dist', 
         '--declarationDir', 
-        `build/lib`
+        'lib'
     ])
 }
 

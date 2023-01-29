@@ -60,7 +60,7 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
     copy({
       targets: [{
         src: path.resolve('src', 'assets'),
-        dest: 'build'
+        dest: process.cwd(),
       }]
     }),
   ] as InputPluginOption[];
@@ -73,13 +73,13 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
   };
 
   if (config.format === 'es') {
-    output.dir = path.resolve("build", "esm")
+    output.dir = path.resolve(process.cwd(), "esm")
     output.assetFileNames
     output.preserveModules = true;
   }
 
   if (config.format === 'cjs') {
-    output.dir = path.resolve("build", "cjs")
+    output.dir = path.resolve(process.cwd(), "cjs")
     output.preserveModules = true;
     output.exports = 'named';
   }
@@ -88,24 +88,24 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
     plugins.push(
       visualizer({
         title: "build",
-        filename: 'build/lib/stats.html',
-        projectRoot: "build",
+        filename: 'lib/stats.html',
         sourcemap: true,
         gzipSize: true,
+        include: [{ file: 'esm' }, { file: 'csm'}, { file: 'lib'}]
       }),
       visualizer({
         title: "build",
-        filename: 'build/lib/stats.json',
-        projectRoot: "build",
+        filename: 'lib/stats.json',
         json: true,
         sourcemap: true,
         gzipSize: true,
+        include: [{ file: 'esm' }, { file: 'csm'}, { file: 'lib'}]
       })
     );
   }
 
   // Rollup executes after TS compilation, which outputs to build/{package}/src
-  const input = path.resolve('build', 'src/index.js');
+  const input = path.resolve(process.cwd(), 'dist/index.js');
 
   return {
     input,

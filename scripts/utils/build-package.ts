@@ -44,7 +44,7 @@ export async function buildPackage(options?: BuildOptions) {
     logger.info(`${chalk.cyan('Building package')}`);
 
     // Prebuild: Remove previous build folder
-    fs.rmSync('build', { recursive: true, force: true });
+    // fs.rmSync('build', { recursive: true, force: true });
 
     try {
         const startTime = Date.now();
@@ -55,7 +55,7 @@ export async function buildPackage(options?: BuildOptions) {
         // Configure and add package.json
         // This needs to be created BEFORE rollup executes as babel
         // is using this to determine the root of the package
-        fs.writeFileSync(`build/package.json`, configurePackageJson())
+        fs.writeFileSync(`package.json`, configurePackageJson())
 
         // Create rollup configs for each format and create bundle
         for (const format of formats) {
@@ -75,7 +75,7 @@ export async function buildPackage(options?: BuildOptions) {
         );
 
         // Postbuild: Removing src folder from directory
-        fs.rmSync(`build/src`, { recursive: true, force: true });
+        // fs.rmSync(`build/src`, { recursive: true, force: true });
 
       } catch (err) {
         process.stdout.write(`${err.toString('minimal')}\n`);
