@@ -1,6 +1,3 @@
-const path = require('path');
-const changelogFile = path.resolve(process.cwd(), '../CHANGELOG.md');
-
 module.exports = {
     branches: ['main'],
     debug: true,
@@ -9,12 +6,12 @@ module.exports = {
         "@semantic-release/github",
         [
             '@semantic-release/changelog',
-            { changelogFile }
+            { changelogFile: '../CHANGELOG.md' }
         ],
         [
             "@semantic-release/git",
             {
-                "assets": [changelogFile],
+                "assets": ['../CHANGELOG.md'],
                 "message": "release(version): Release ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
             }
         ],
