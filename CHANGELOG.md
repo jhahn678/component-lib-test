@@ -1,3 +1,5 @@
+## [2.1.9](https://github.com/jhahn678/component-library/compare/v2.1.8...v2.1.9) (2023-01-29)
+
 ## [2.1.8](https://github.com/jhahn678/component-library/compare/v2.1.7...v2.1.8) (2023-01-29)
 
 
