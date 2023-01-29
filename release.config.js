@@ -1,7 +1,3 @@
-const path = require('path');
-
-console.log(path.resolve('../CHANGELOG.md'))
-
 module.exports = {
     branches: ['main'],
     debug: true,
