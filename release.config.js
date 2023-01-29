@@ -22,7 +22,6 @@ module.exports = {
         [
             "@semantic-release/commit-analyzer",
             {
-                preset: 'conventionalcommits',
                 releaseRules: [
                     {revert: true, release: "patch"},
                     {breaking: true, release: 'major'},
@@ -43,7 +42,6 @@ module.exports = {
         [
             "@semantic-release/release-notes-generator",
             {
-                preset: 'conventionalcommits',
                 parserOpts: {
                     mergePattern: "^Merge branch '(.*)' into (.*)$",
                     noteKeywords: ["BREAKING CHANGE", "BREAKING CHANGES", "BREAKING"],
