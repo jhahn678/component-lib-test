@@ -18,6 +18,19 @@ interface PackageConfig {
     devDependencies: { [k: string]: string },
 }
 
+
+/**
+ * Gets package.json from specified path and parse to object
+ * @param fromPath defaults to process.cwd()
+ * @returns parsed package.json as object
+ */
+export const getPackageJson = (fromPath: string = cwd): PackageConfig => {
+    const packagePath = path.join(fromPath, "package.json")
+    const file = fs.readFileSync(packagePath, { encoding: 'utf-8' });
+    return JSON.parse(file);
+}
+
+
 /**
  * These are dependencies that need to be excluded from the
  * build package.json. React and React-native(-web) will
@@ -36,19 +49,6 @@ const exclude = [
     'react-native',
     'react-native-web',
 ];
-
-
-/**
- * Gets package.json from specified path and parse to object
- * @param fromPath defaults to process.cwd()
- * @returns parsed package.json as object
- */
-export const getPackageJson = (fromPath: string = cwd): PackageConfig => {
-    const packagePath = path.join(fromPath, "package.json")
-    const file = fs.readFileSync(packagePath, { encoding: 'utf-8' });
-    return JSON.parse(file);
-}
-
 
 /**
  * @description
