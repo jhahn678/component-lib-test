@@ -1,3 +1,10 @@
+## [2.1.11](https://github.com/jhahn678/component-library/compare/v2.1.10...v2.1.11) (2023-01-30)
+
+
+### Bug Fixes
+
+* fix build output ([c23688e](https://github.com/jhahn678/component-library/commit/c23688e0cdbebd90c5583ff627f6c81d6e30a72a))
+
 ## [2.1.10](https://github.com/jhahn678/component-library/compare/v2.1.9...v2.1.10) (2023-01-30)
 
 
