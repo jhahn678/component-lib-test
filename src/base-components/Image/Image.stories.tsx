@@ -13,5 +13,5 @@ Basic.args = {
   height: 200,
   width: 300,
   borderRadius: 'lg',
-  source: { uri: require('../../assets/soccer_baltimore.png') }
+  source: { uri: require('assets/soccer_baltimore.png') }
 }

@@ -9,7 +9,7 @@ module.exports = function(api) {
     plugins: [
       ['module-resolver', {
         alias: {
-          "assets": path.resolve('src', 'assets')
+          "assets": path.resolve(process.cwd(), 'assets')
         }
       }]
     ]

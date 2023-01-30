@@ -5,7 +5,6 @@ import nodeExternals from 'rollup-plugin-node-externals';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { babel, RollupBabelInputPluginOptions } from '@rollup/plugin-babel'
 import visualizer from 'rollup-plugin-visualizer';
-import copy from 'rollup-plugin-copy'
 import esbuild from 'rollup-plugin-esbuild';
 import { PluginItem } from '@babel/core';
 
@@ -30,7 +29,7 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
     ['module-resolver', {
       cwd: "packagejson",
       alias: {
-        "assets": "./assets"
+        "assets": path.join(process.cwd(), 'assets')
       }
     }]
   ];
@@ -57,12 +56,6 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
     nodeResolve({ extensions: ['.ts', '.tsx', '.js', '.jsx'] }),
     nodeExternals(),
     esbuild({ minify: config.format === 'umd' }),
-    copy({
-      targets: [{
-        src: path.resolve('src', 'assets'),
-        dest: process.cwd(),
-      }]
-    }),
   ] as InputPluginOption[];
 
   const output: OutputOptions = {

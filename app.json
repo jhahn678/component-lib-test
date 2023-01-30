@@ -2,12 +2,13 @@
   "expo": {
     "name": "component-library",
     "slug": "component-library",
+    "entryPoint": "node_modules/expo/AppEntry.js",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./src/assets/Volo-logo-color.png",
+    "icon": "./assets/Volo-logo-color.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./src/assets/Volo-logo-color.png",
+      "image": "./assets/Volo-logo-color.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -22,12 +23,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/Volo-logo-color.png",
+        "foregroundImage": "./assets/Volo-logo-color.png",
         "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
-      "favicon": "./src/assets/Volo-logo-color.png"
+      "favicon": "./assets/Volo-logo-color.png"
     }
   }
 }

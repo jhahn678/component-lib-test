@@ -14,7 +14,7 @@ module.exports = {
   ],
   framework: "@storybook/react",
   staticDirs: [
-    { from: "../src/assets", to: "assets" },
-    { from: "../assets/fonts", to: "fonts" }
+    { from: "../assets", to: "assets" },
+    { from: "../docs/fonts", to: "fonts" }
   ],
 }

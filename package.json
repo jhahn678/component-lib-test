@@ -2,7 +2,10 @@
   "name": "@jhahn678/components",
   "version": "0.0.0-development",
   "license": "LICENSE.md",
-  "main": "node_modules/expo/AppEntry.js",
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "types": "lib/index.d.ts",
+  "sideEffects": false,
   "repository": "https://github.com/jhahn678/component-library.git",
   "author": "Julian Hahn <jhahn678@yahoo.com>",
   "publishConfig": {
@@ -24,21 +27,33 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx",
     "cz": "git-cz"
   },
+  "files": [
+    "cjs",
+    "esm",
+    "lib",
+    "LICENSE.md",
+    "package.json"
+],
   "dependencies": {
     "@babel/runtime": "^7.20.7",
-    "expo": "45.0.0",
-    "expo-font": "~10.1.0",
-    "expo-splash-screen": "~0.15.1",
     "native-base": "^3.4.25",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-native": "0.68.2",
     "react-native-safe-area-context": "^3.3.2",
-    "react-native-svg": "^12.1.0",
-    "react-native-web": "0.17.1"
+    "react-native-svg": "^12.1.0"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.2",
+    "react-native": ">=0.68.0",
+    "react-native-web": ">=0.17.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "expo": "45.0.0",
+    "expo-font": "~10.1.0",
+    "expo-splash-screen": "~0.15.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-native": "0.68.2",
+    "react-native-web": "0.17.1",
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-commonjs": "^24.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",

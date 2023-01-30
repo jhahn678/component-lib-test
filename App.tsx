@@ -9,10 +9,10 @@ SplashScreen.preventAutoHideAsync();
 export default function App() {
 
   const [fontsLoaded] = useFonts({
-    ['VoloSansPro']: require('./assets/fonts/VoloSansPro.otf'),
-    [fonts.VoloSans.bold]: require('./assets/fonts/VoloSansPro-Bold.otf'),
-    [fonts.VoloSans.ultra]: require('./assets/fonts/VoloSansPro-Ultra.otf'),
-    [fonts.VoloSans.regular]: require('./assets/fonts/VoloSansPro-Regular.otf'),
+    ['VoloSansPro']: require('./docs/fonts/VoloSansPro.otf'),
+    [fonts.VoloSans.bold]: require('./docs/fonts/VoloSansPro-Bold.otf'),
+    [fonts.VoloSans.ultra]: require('./docs/fonts/VoloSansPro-Ultra.otf'),
+    [fonts.VoloSans.regular]: require('./docs/fonts/VoloSansPro-Regular.otf'),
   });
 
   const onLayoutRootView = useCallback(async () => {
