@@ -31,6 +31,7 @@
     "cjs",
     "esm",
     "lib",
+    "assets",
     "LICENSE.md",
     "package.json"
 ],

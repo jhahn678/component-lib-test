@@ -42,7 +42,7 @@ export async function buildPackage(options?: BuildOptions) {
 
     logger.info(`${chalk.cyan('Building package')}`);
 
-    // Prebuild: Remove previous build folder
+    // Prebuild: Remove previous build folders
     fs.rmSync('cjs', { recursive: true, force: true });
     fs.rmSync('esm', { recursive: true, force: true });
     fs.rmSync('lib', { recursive: true, force: true });
